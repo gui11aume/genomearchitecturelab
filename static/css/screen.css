@@ -1,0 +1,141 @@
+html, body {
+  background-color: white;
+  margin: 0px;
+  font-size: 13pt;
+}
+
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a:link { color: #f00; text-decoration: none; }
+a:visited {color: #f00; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+a.silent_link {
+  text-decoration: none;
+}
+
+h2 a.silent_link {
+  color: #f00;
+  text-decoration: none;
+}
+
+a.static {
+  text-decoration: none;
+  font-size: 18pt;
+  color: white;
+}
+
+h2 {
+  font-size: 24pt;
+  text-align: center;
+  color: #f00;
+}
+
+#blog_name {
+  /* font-family:ITCCenturyStdBookCondensed; */
+  font-size: 36pt;
+  font-weight: bold;
+  color: #f00;
+}
+
+#slogan {
+  /* font-family:ITCCenturyStdBkCnIt; */
+  font-size: 18pt;
+  font-style: italic;
+  color: black;
+}
+
+#top_banner {
+  position: fixed;
+  background: white;
+  top:0px;
+  height: 73px;
+  width:100%;
+  min-width: 800px;
+  padding-top: 18px;
+  text-align: center;
+  border-bottom: 2px solid #f00;
+}
+
+#outer {
+  overflow: hidden;
+  min-width: 800px;
+}
+
+.main_column {
+  padding-top: 80px;
+  padding-bottom: 32767px;
+  margin-bottom: -32767px;
+  height: 100%;
+}
+
+#left_column {
+  float: left;
+  width: 30%;
+  color: white;
+  background-color: #f00;
+  text-align: center;
+}
+
+#right_column {
+  float:right;
+  width: 50%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#bottom_space {
+  float: left;
+  clear: both;
+  height: 100px;
+}
+
+/* Styling for admin form */
+
+#name {
+  width: 450px;
+}
+
+#message {
+  width: 450px;
+  height: 400px;
+}
+
+#id_tags {
+}
+
+/* Post formatting. */
+
+.post-info {
+  text-align: center;
+}
+
+.date {
+  font-size: 14pt;
+  font-style: italic;
+}
+
+.post-format, .readmore {
+  font-size: 13pt;
+}
+
+#hard_parts_info {
+  text-align: center;
+  font-size: 11pt;
+  font-style: italic;
+}
+
+.hard, .hard_format {
+  padding: 8px;
+  background-color: #d0d0d0;
+}
+
+#prev_next {
+  text-align: center;
+}
+
+.folded_hard_part { cursor: hand; cursor: pointer }

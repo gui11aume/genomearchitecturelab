@@ -8,10 +8,18 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 class Server(webapp.RequestHandler):
-   """Minimal server for diagnostic."""
+   """Minimal server."""
    def get(self):
-      self.response.out.write('in development')
-      return
+      template_vals = {}
+      template_path = os.path.join(
+          os.path.dirname(__file__),
+          'templates',
+          'base.html'
+      )
+      self.response.out.write(template.render(
+          template_path,
+          template_vals
+      ))
 
 application = webapp.WSGIApplication([
   ('/.*', Server),
