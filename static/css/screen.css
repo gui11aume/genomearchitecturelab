@@ -1,4 +1,5 @@
 html, body {
+  font-family:Times, serif;
   background-color: white;
   margin: 0px;
   font-size: 13pt;
@@ -23,10 +24,18 @@ h2 a.silent_link {
   text-decoration: none;
 }
 
-a.static {
+a.navigation_link {
   text-decoration: none;
-  font-size: 18pt;
   color: white;
+}
+
+a.big_link {
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+a.small_link {
+  font-size: 18pt;
 }
 
 h2 {
@@ -67,30 +76,42 @@ h2 {
 }
 
 .main_column {
-  padding-top: 80px;
   padding-bottom: 32767px;
   margin-bottom: -32767px;
-  height: 100%;
 }
 
 #left_column {
   float: left;
-  width: 30%;
-  color: white;
-  background-color: #f00;
-  text-align: center;
+  width: 50%;
+  min-width: 600px;
+  height: 100%;
+  padding-top: 80px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 #right_column {
-  float:right;
-  width: 50%;
-  padding-left: 10%;
-  padding-right: 10%;
+  position: fixed;
+  top: 91px;
+  left: 80%;
+  width: 20%;
+  min-width: 220px;
+  text-align: right;
+  color: white;
+  background-color: #f00;
+}
+
+#menu {
+  float: right;
+  margin-right: 7.5%;
+  width: 80%;
+  text-align: center;
 }
 
 #bottom_space {
   float: left;
   clear: both;
+  width: 100%;
   height: 100px;
 }
 
@@ -138,4 +159,9 @@ h2 {
   text-align: center;
 }
 
-.folded_hard_part { cursor: hand; cursor: pointer }
+.folded_hard_part { 
+  cursor: hand;
+  cursor: pointer;
+  margin-top: 30px;
+  margin-bottom: 45px;
+}
