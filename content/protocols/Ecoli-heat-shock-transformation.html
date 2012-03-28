@@ -2,17 +2,21 @@
 {% block body %}
 <br/>
 <br/>
-<h2><i>E. coli</i> heat-shock transformation</h2>
+<div class="hrecipe">
+<h2 class="fn"><i>E. coli</i> heat-shock transformation</h2>
 
 <h3>Material:</h3>
 <ul>
-  <li>50 &mu;L competent cells</li>
-  <li>plasmid DNA</li>
-  <li>heating block at 42&deg;C</li>
-  <li>LB plates with proper antibiotic</li>
+  <li class="ingredient">
+    <span class="value">50</span>
+    <span class="type">&mu;L</span> competent cells
+  </li>
+  <li class="ingredient">plasmid DNA</li>
+  <li class="ingredient">heating block at 42&deg;C</li>
+  <li class="ingredient">LB plates with proper antibiotic</li>
 </ul>
 
-<h3>Procedure:</h3>
+<h3 class="instructions">Procedure:</h3>
 <ol>
   <li>Turn on the heating block at 42&deg;C.</li>
   <li>Take competent cells from -80&deg;C freezer and thaw them on ice.</li>
@@ -25,5 +29,6 @@
 </ol>
 
 <span id="version">- version 0.5 -</span>
+</div><!-- end hRecipe -->
 {% endblock %}
 {% block section %}<div id="section" title="#protocols"></div>{% endblock %}
