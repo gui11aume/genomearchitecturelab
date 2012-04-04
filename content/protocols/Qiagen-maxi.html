@@ -1,0 +1,104 @@
+{% extends "lab.html" %}
+{% block body %}
+<br/>
+<br/>
+<div class="hrecipe">
+<h2 class="fn">Modified Qiagen maxi-prep</h2>
+
+<p class="summary">Some parts of this protocol have been
+<span class="optimized">optimized</span> for speed and
+ease of use. Using 100 mL culture allows to perform all the steps
+in Falcon tubes and a medium speed centrifugation. This is then
+easier to scale up the number of maxi-preps in parallel. The yield
+is routinely more than <span class="yield">200 &mu;g</span>
+for high copy number plasmid.</p>
+
+<h3>Material</h3>
+<ul>
+  <li class="ingredient">
+    <span class="value">100</span>
+    <span class="type">mL</span> bacterial culture
+  </li>
+  <li class="ingredient">
+    <span class="company">Qiagen</span> Plasmid Maxi kit (Cat. No. 
+    <span class="product_reference">12163</span>)
+  </li>
+  <li class="ingredient">
+    Isopropanol
+  </li>
+  <li class="ingredient">
+    70% Ethanol
+  </li>
+</ul>
+
+<h3 class="instructions">Procedure:</h3>
+
+<div class="out_part">
+<h4>When you open the kit</h4>
+  <ol>
+    <li>Add RNase A and LyseBlue to buffer P1.</li>
+    <li>Store buffer P1 and buffer P3 at 4&deg;C</li>
+    <li>Store buffer P2 at room temperature.</li>
+  </ol>
+  <br/>
+</div>
+
+<div class="out_part">
+<h4>Bacteria culture</h4>
+  <ol>
+    <li>Pick a single colony of <i>E. coli</i> from a plate and inoculate a starter culture of 5 mL LB medium containing the appropriate antibiotic.</li>
+    <li>Incubate overnight at 37&deg;C with shaking at ~ 300 rpm.</li>
+    <li>Inoculate 1 mL of a starter culture into a flask with <span class="optimized">100 mL LB</span> medium containing the appropriate antibiotic and grow at 37&deg;C for more tan 12 hours with with shaking at ~ 300 rpm.</li>
+  </ol>
+  <br/>
+</div>
+
+<ol>
+  <li><span class="optimized">If a white precipitate (SDS) is visible in
+    buffer P2, heat the bottle in an incubator or in water bath until it
+    disappears</span>.</li>
+  <li>Seperate culture into two 50 mL Falcon tubes and centrifuge at 4000 rpm
+    for<span class="duration"><span class="value-title" title="PT10M">
+    </span>10 minutes</span>.</li>
+    at 4&deg;C.<br/>
+  <li>Resuspend the bacterial pellet with 10 mL buffer P1 containing RNase
+    A and LyseBlue.</li>
+  <li>Add 10 mL buffer P2, mix by inverting the tube until uniformly blue
+    and leave at room temperature
+    for<span class="duration"><span class="value-title" title="PT5M">
+    </span>5 minutes</span>.</li>
+  <li>Add 10 mL chilled buffer P3, mix by vigorously inverting until blue
+    color disappears, and place the tube on ice
+    for<span class="duration"><span class="value-title" title="PT20M">
+    </span>20 min</span>.</li>
+  <li>Centrifuge the Falcon tubes at <span class="optimized">4000 rpm
+    for<span class="duration"><span class="value-title" title="PT5M">
+    </span>10 minutes</span>
+    at 4&deg;C</span>.</li>
+  <li>Meanwhile, equilibrate the Qiagen column by washing with 10 mL
+    buffer QBT.</li>
+  <li>Carefully decant the liquid phase into the column. Some white
+    debris will follow, but try to minize it.</li>
+  <li>Wash the column 2 times with 30 mL buffer QC.</li>
+  <li>Elute DNA with 15 mL buffer QF in a <span class="optimized">50 mL
+    Falcon tube</span>.</li>
+  <li>Precipitate DNA by adding 10.5 mL room-temperature isopropanol to
+    the eluate. Mix and centrifuge at <span class="optimized">4000 rpm
+    for<span class="duration"><span class="value-title" title="PT30M">
+    </span>30 minutes</span>
+    at 4&deg;C</span>.</li>
+  <li>Wash DNA pellet with 5 mL of room-temperature 70% ethanol, and
+    centrifuge at <span class="optimized">4000 rpm
+    for<span class="duration"><span class="value-title" title="PT15M">
+    </span>15 minuntes</span></span>.</li>
+  <li>Spill the liquid. The pellet should form a visible white ring at
+    the bottom of the tube.</li>
+  <li><span class="otpimized">Dry the walls of the tube with a
+    tissue</span>. Do not touch the pellet.</li>
+  <li>Dissolve the pellet in 100 &mu;L of ddH<sub>2</sub>O.</li>
+
+<br/>
+- version 1.0 -
+</div><!-- end hRecipe -->
+{% endblock %}
+{% block section %}<div id="section" title="#protocols"></div>{% endblock %}
