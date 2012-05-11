@@ -1,0 +1,37 @@
+{% extends "lab.html" %}
+{% block body %}
+  <br/>
+  <br/>
+<p>The 20th century has been the triumph of genetics. However, we fully understand a mere 3% of the human genome - that is, the coding genome. More challenging is to understand how this tiny fraction is orchestrated by the much larger <strong>regulatory genome</strong>. What does the regulatory genome consist of? How does it encode information? How is it organized and how does it evolve? Contrary to the coding genome, the information of the regulatory genome is <strong>context-dependent</strong>. For example, the same promoter can have different levels of activity, the same enhancers can activate one gene or another, depending on available transcription factors and on the local chromatin marks. So the DNA sequence is not enough to understand the function of regulatory sequences. Our research lines focus on the influence of the chromatin context on transcription; and on the co-evolution between the genome and its chromatin context.</p>
+
+<h2>Invasion landscapes</h2>
+<p>Distinct chromatin types can "fight" for a genome territory. This was suggested by an early observation of  Drosophila genetics called Position Effect Variegation (PEV). In mutant the PEV strains, the white gene is translocated near a centromere, which is coated in heterochromatin, rich in repeated sequences and poor in genes. Even though the sequence of the gene is not mutated, these flies have a characteristic mottled white eye. This reflects random expression levels, mirroring the invasion of heterochromatin into the territory of the gene.</p>
+
+<p>Intriguingly, some genes seem to be immune to PEV (in particular the ones that naturally map to the centromeres). So the question remains if and how the phenomenon happens in physiological conditions. How can a chromatin type invade a territory and replace the local chromatin? And what is the role of the DNA sequence in allowing this transition to take place?</p>
+
+<p>To better understand these phenomena, we develop a technology  that we call TRiP, for Thousand Reporters in Parallel. Inspired by PEV of the white gene, the aim of TRiP is to place a gene in a new chromatin context at random and measure the impact on its transcription. The novelty of TRiP is that it allows to do this in a genome-wide and high-throughput manner. If the sequence of the gene fully determines it activity, the transcription will be even across the genome. Otherwise, if the chromatin context has a say, the transcription will vary in a predictable manner. In short, TRiP allows us to map the regions where a gene can invade the local chromatin and maintain its expression level, and regions where the local chromatin shuts down its expression.</p>
+
+<h2>The TRiP technology</h2>
+<p>TRiP is a combination of three technologies: barcoding PCR, Sleeping Beauty transposition, and high throughput sequencing. Barcoding PCR is a technique developed by our team to generate libraries of tagged plasmids making <strong>every molecule unique</strong>. The idea of barcoding PCR is to insert a stretch of ~20 random nucleotides at a chosen location of a plasmid. This generates a library with a complexity of the order of 1010 which ensures that we can identify every molecule uniquely in most applications.</p>
+
+<p>This technique allows us to construct a library of barcoded Sleeping Beauty transposons that are integrated in a cell population. The library consists of about 100,000 integrations which is five orders of magnitude lower than 1010, so the chances of two integrations having the same barcode are negligible. The constant part of the transposon consists of the promoter of an endogenous gene driving the expression of GFP and Sleeping Beauty transposase binding sites necessary for transposition. Such a library and a Sleeping Beauty transposase expression plasmid a co-transfected in a population of cells, which results in a heterogeneous population expressing the transgene at different levels, depending on the integration site.</p>
+
+<p>The barcode is used in two ways. First, barcodes are mapped by inverse PCR followed by high throughput sequencing, which allows us to associate a barcode with a unique integration site. In addition, the barcode is actually placed in the mRNA of the GFP gene, which allows us to distinguish transcripts produced by different transposons and measure their individual expression by quantitative high throughput sequencing. By combining both informations we know whether a promoter can drive the expression of GFP at a particular site and in a particular chromatin context.</p>
+
+
+<h2>The chromatin print</h2>
+<p>One of the earliest observations of genomics is that the CG dinucleotide is depleted from mammalian genomes. This characteristic pattern is caused by methylation of cytosines, which only takes place in the context of the CG dinucleotide. At the time scale of the organism, CG methylation causes epigenetic gene silencing*. However, methylation of cytosine is extremely mutagenic, so that on evolutionary time scales, methylated CGs tend to disappear by mutating to TG or CA. To simplify, the absence of CGs in our genomes is the result of gene silencing in our ancestors. Reciprocally, a patch of the genome with high occurrence of CG (like CpG islands) denotes lack of methylation in the lineage and therefore no gene silencing.</p>
+
+<p>This example points out the tight connection between the sequence of a genome and its past epigenetic environment. In the course of evolution, chromatin can shape the sequence of a genome. Most of this action will take place through DNA damage and repair, we call this effect the <strong>chromatin print</strong>.</p>
+
+<p>A modified version of TRiP allows us to study and measure the chromatin print. Instead of transposing a GFP transgene we transpose a reporter for double strand break repair. This reporter consists of a repeated sequence of about 200 bp flanking an I-SceI meganuclease site. The restriction site of the I-SceI endonuclease is 18 bp long and is absent from the human, mouse and Drosophila genomes, so that expression of I-SceI will create a unique double strand break in the reporter, inserted at a different site in every cell. The double strand break can be repaired in two ways: either through non homologous end joining (NHEJ) whereby broken ends are simply stitched together, or through homologous recombination (HR) whereby free ends are reunited by a recombination through the ~200 bp repeat. After NHEJ, the two repeats are still present, but after HR only one remains, which allows us to distinguish the two events by high throughput sequencing. This way we can identify HR hotspots in a given cell and correlate this information to the chromatin context.</p>
+
+<p>In addition, the repeats can be modified so as to differ on exactly one nucleotide. In the process of HR this will create a mismatch which will be repaired by yet another mechanism. This allows us to study how post-HR mismatches are handled at different loci and in different chromatin contexts.</p>
+
+* CG methylation also has other functions in mammals.
+
+  <div id="bottom_space"></div>
+{% endblock %}
+{% block section %}
+       <div id="section" title="#researchlines"></div>
+{% endblock %}
