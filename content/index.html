@@ -2,11 +2,13 @@
 {% block body %}
   <br/>
   <br/>
-  <h2>Welcome to the Genome Architecture Lab!</h2>
-  The site is still under construction. You can check out the blog,
-  and the research lines and the online journal club.
-  <h2>Position available</h2>
-  We have a PhD position. If you are interested to work with us, please
-  contact <script>print_mail('Guillaume Filion')</script>.
+  <br/>
+  <br/>
+
+  <div id="tagCloud1" style="width:50%; margin: 0px auto;"></div>
+
   <div id="bottom_space"></div>
+  <script type="text/javascript">
+		tagCloud1.Distribute(document.getElementById("tagCloud1")).Animate();
+  </script>
 {% endblock %}

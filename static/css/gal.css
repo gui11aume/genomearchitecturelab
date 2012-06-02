@@ -1,6 +1,18 @@
 h4 {
   color: #f00;
 }
+
+td {
+  vertical-align:top;
+  padding:30px;
+}
+
+td > h3:first-child {
+  margin-top:0px;
+  padding-top:0px;
+  color:#f00;
+}
+
 .out_part {
   background-color: #d0d0d0;
   padding-left: 5px;
