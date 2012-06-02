@@ -13,7 +13,7 @@ from django import template
 from django.template import loader
 
 
-TEMPLATE_DIRS = ['content']
+TEMPLATE_DIRS = ['thegrandlocus_theme', 'content']
 
 
 def render_template(template_name, template_vals=None):
