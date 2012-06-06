@@ -1,0 +1,142 @@
+predict.lme <- function(object, newdata, level, na.action=na.pass, ...) {
+    Q <- object$dims$Q
+    if (missing(newdata)) {
+        val <- fitted(object, level, asList)
+        if (length(level) == 1) 
+            return(val)
+        return(data.frame(object[["groups"]][, level[level != 
+            0], drop = FALSE], predict = val))
+    }
+    maxQ <- max(level)
+    mCall <- object$call
+    fixed <- eval(eval(mCall$fixed)[-2])
+    Terms <- object$terms
+    newdata <- as.data.frame(newdata)
+    if (maxQ > 0) {
+        reSt <- object$modelStruct$reStruct[Q - (maxQ - 1):0]
+        lmeSt <- lmeStruct(reStruct = reSt)
+        groups <- getGroupsFormula(reSt)
+        if (any(is.na(match(all.vars(groups), names(newdata))))) {
+            stop("Cannot evaluate groups for desired levels on \"newdata\"")
+        }
+    }
+    else {
+        reSt <- NULL
+    }
+    #mfArgs <- list(formula = asOneFormula(formula(reSt), fixed), 
+    #    data = newdata, na.action = na.action, drop.unused.levels = TRUE)
+    mfArgs <- list(formula = asOneFormula(formula(reSt), fixed),
+         data = newdata, na.action = na.action, drop.unused.levels = FALSE)
+    dataMix <- do.call("model.frame", mfArgs)
+    origOrder <- row.names(dataMix)
+    whichRows <- match(origOrder, row.names(newdata))
+    if (maxQ > 0) {
+        grps <- getGroups(newdata, eval(parse(text = paste("~1", 
+            deparse(groups[[2]]), sep = "|"))))
+        if (inherits(grps, "factor")) {
+            grps <- grps[whichRows]
+            oGrps <- data.frame(grps)
+            if (any(naGrps <- is.na(grps))) {
+                grps[naGrps] <- levels(grps)[1]
+            }
+            ord <- order(grps)
+            grps <- data.frame(grps)
+            row.names(grps) <- origOrder
+            names(grps) <- names(oGrps) <- as.character(deparse((groups[[2]])))
+        }
+        else {
+            grps <- oGrps <- do.call("data.frame", lapply(grps[whichRows, 
+                ], function(x) x[drop = TRUE]))
+            if (any(naGrps <- is.na(grps))) {
+                for (i in names(grps)) {
+                  grps[naGrps[, i], i] <- levels(grps[, i])[1]
+                }
+                naGrps <- t(apply(naGrps, 1, cumsum))
+            }
+            ord <- do.call("order", grps)
+            grps[, 1] <- grps[, 1][drop = TRUE]
+            for (i in 2:ncol(grps)) {
+                grps[, i] <- as.factor(paste(as.character(grps[, 
+                  i - 1]), as.character(grps[, i]), sep = "/"))
+                NULL
+            }
+        }
+        naGrps <- cbind(FALSE, naGrps)[ord, , drop = FALSE]
+        grps <- grps[ord, , drop = FALSE]
+        dataMix <- dataMix[ord, , drop = FALSE]
+    }
+    contr <- object$contrasts
+    for (i in names(dataMix)) {
+        if (inherits(dataMix[, i], "factor") && !is.null(contr[[i]])) {
+            levs <- levels(dataMix[, i])
+            levsC <- dimnames(contr[[i]])[[1]]
+            if (any(wch <- is.na(match(levs, levsC)))) {
+                stop(paste("Levels", paste(levs[wch], collapse = ","), 
+                  "not allowed for", i))
+            }
+            attr(dataMix[, i], "contrasts") <- contr[[i]][levs, 
+                , drop = FALSE]
+        }
+    }
+    if (maxQ > 0) {
+        revOrder <- match(origOrder, row.names(dataMix))
+        Z <- model.matrix(reSt, dataMix)
+        ncols <- attr(Z, "ncols")
+        Names(lmeSt$reStruct) <- attr(Z, "nams")
+    }
+    N <- nrow(dataMix)
+    if (length(all.vars(fixed)) > 0) {
+        X <- model.matrix(fixed, model.frame(delete.response(Terms), 
+            dataMix))
+    }
+    else {
+        X <- array(1, c(N, 1), list(row.names(dataMix), "(Intercept)"))
+    }
+    if (maxQ == 0) {
+        val <- c(X %*% fixef(object))
+        attr(val, "label") <- "Predicted values"
+        return(val)
+    }
+    ncols <- c(ncols, dim(X)[2], 1)
+    attr(lmeSt, "conLin") <- list(Xy = array(c(Z, X, double(N)), 
+        c(N, sum(ncols)), list(row.names(dataMix), c(colnames(Z), 
+            colnames(X), "resp"))), dims = MEdims(grps, ncols))
+    re <- object$coefficients$random[1:maxQ]
+    for (i in names(re)) {
+        ugrps <- unique(as.character(grps[, i]))
+        val <- array(NA, c(length(ugrps), ncol(re[[i]])), list(ugrps, 
+            dimnames(re[[i]])[[2]]))
+        mGrps <- match(ugrps, dimnames(re[[i]])[[1]])
+        mGrps <- mGrps[!is.na(mGrps)]
+        re[[i]] <- re[[i]][mGrps, , drop = FALSE]
+        val[dimnames(re[[i]])[[1]], ] <- re[[i]]
+        re[[i]] <- val
+    }
+    attr(lmeSt, "lmeFit") <- list(beta = fixef(object), b = re)
+    val <- fitted(lmeSt, level = 0:maxQ)
+    val[as.logical(naGrps)] <- NA
+    val <- val[revOrder, level + 1]
+    if (maxQ > 1) {
+        for (i in 2:maxQ) {
+            oGrps[, i] <- as.factor(paste(as.character(oGrps[, 
+                i - 1]), as.character(oGrps[, i]), sep = "/"))
+        }
+    }
+    if (length(level) == 1) {
+        grps <- as.character(oGrps[, level])
+        if (asList) {
+            val <- split(val, ordered(grps, levels = unique(grps)))
+        }
+        else {
+            names(val) <- grps
+        }
+        attr(val, "label") <- "Predicted values"
+        if (!is.null(aux <- attr(object, "units")$y)) 
+            attr(val, "label") <- paste(attr(val, "label"), aux)
+        val
+    }
+    else {
+        data.frame(oGrps, predict = data.frame(val))
+    }
+}
+
