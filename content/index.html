@@ -1,5 +1,27 @@
 {% extends "lab.html" %}
 {% block body %}
+
+  <!-- JS-Cumulus -->
+  <script type="text/javascript" src="/js/JS-Cumulus/js-cumulus.min.js"></script>
+  <script type="text/javascript">
+    //JSCumulus.noConflict();
+    //Tag(2);
+
+    var tagCloud1;
+
+    /* TagCloud 1 */
+    var tags1 = [
+      new Tag("Journal Club", 100, "http://openjournalclub.thegrandlocus.com/"),
+      new Tag("The Wiki", 100, "http://wiki.thegrandlocus.com/"),
+      new Tag("Our Research", 100, "/research-lines.html"),
+      new Tag("Work with Us", 100, "/work-with-us.html"),
+      new Tag("The Blog", 100, "http://blog.thegrandlocus.com/"),
+      new Tag("The Team", 100, "/team.html"),
+      new Tag("Protocols", 100, "/protocols/list.html"),
+    ];
+    tagCloud1 = new TagCloud(tags1, 400, 400);
+  </script>
+
   <br/>
   <br/>
   <br/>
@@ -9,6 +31,6 @@
 
   <div id="bottom_space"></div>
   <script type="text/javascript">
-		tagCloud1.Distribute(document.getElementById("tagCloud1")).Animate();
+    tagCloud1.Distribute(document.getElementById("tagCloud1")).Animate();
   </script>
 {% endblock %}

@@ -22,3 +22,26 @@ td > h3:first-child {
 .optimized {
   color: #f00;
 }
+
+/* Tag cloud */
+.tagCloud {
+  background: white
+}
+.tagCloud .tagClass img {
+  border: 0 none;
+}
+.tagCloud ul, .tagCloud li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tagCloud .tagClass a {
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.tagCloud .tagClass a:hover {
+  border: solid 1px #f00;
+  text-decoration: none;
+}
