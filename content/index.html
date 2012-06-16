@@ -2,15 +2,10 @@
 {% block body %}
 
   <!-- JS-Cumulus -->
-  <script type="text/javascript" src="/js/JS-Cumulus/js-cumulus.min.js"></script>
+  <script type="text/javascript" src="/js/JS-Cumulus/js-cumulus.js"></script>
   <script type="text/javascript">
-    //JSCumulus.noConflict();
-    //Tag(2);
-
-    var tagCloud1;
-
-    /* TagCloud 1 */
-    var tags1 = [
+    var theTagCloud;
+    var tags = [
       new Tag("Journal Club", 100, "http://openjournalclub.thegrandlocus.com/"),
       new Tag("The Wiki", 100, "http://wiki.thegrandlocus.com/"),
       new Tag("Our Research", 100, "/research-lines.html"),
@@ -19,7 +14,7 @@
       new Tag("The Team", 100, "/team.html"),
       new Tag("Protocols", 100, "/protocols/list.html"),
     ];
-    tagCloud1 = new TagCloud(tags1, 400, 400);
+    theTagCloud = new TagCloud(tags, 400, 400);
   </script>
 
   <br/>
@@ -27,10 +22,13 @@
   <br/>
   <br/>
 
-  <div id="tagCloud1" style="width:50%; margin: 0px auto;"></div>
+  <div id="theTagCloud" style="width:50%; margin:0px auto;"></div>
 
   <div id="bottom_space"></div>
   <script type="text/javascript">
-    tagCloud1.Distribute(document.getElementById("tagCloud1")).Animate();
+    var v = [1,2,3].map(function() {return Math.random()-.5});
+    var vector = new Vector(v[0], v[1], v[2]);
+    theTagCloud.Distribute(document.getElementById("theTagCloud")).
+        Animate(vector.Multiply(4));
   </script>
 {% endblock %}
