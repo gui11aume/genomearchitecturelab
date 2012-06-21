@@ -1,0 +1,109 @@
+{% extends "lab.html" %}
+{% block body %}
+<br/>
+<br/>
+
+<div class="hrecipe">
+<h2 class="fn">Barcoding PCR</h2>
+<p class="summary">Some parts of this protocol have been
+<span class="optimized">optimized</span> for efficiency and yield.
+See the comments below for complements.</p>
+
+<h3>Material:</h3>
+<ul>
+  <li class="ingredient">Phusion polymerase
+    (<span class="company">New England Biolabs</span>
+    <span class="product_reference">M0530S</span>)
+  </li>
+  <li class="ingredient">T4 DNA polymerase
+    (<span class="company">New England Biolabs</span>
+    <span class="product_reference">M0203S</span>)
+  </li>
+  <li class="ingredient">Concentrated T4 DNA ligase
+    (<span class="company">New England Biolabs</span>
+    <span class="product_reference">M0202M</span>)
+  </li>
+  <li class="ingredient">500 mM EDTA
+  </li>
+  <li class="ingredient"><span class="optimized">5'-phosphorylated</span>
+    barcoded primers
+  </li>
+</ul>
+
+<h3 class="instructions">Procedure:</h3>
+<ol>
+  <li>Prepare the following PCR mix.
+    <table class="reaction_mix">
+      <thead>
+        <tr><th>component</th><th>volume (&mu;L)</th></tr>
+      </thead>
+
+      <tbody>
+        <tr class="odd"><td>H<sub>2</sub>O</td><td>14</td></tr>
+        <tr class="even"><td>5x GC buffer</td><td>4</td></tr>
+        <tr class="odd"><td>10 mM each dNTPs</td><td>0.5</td></tr>
+        <tr class="even"><td>10 &mu;M forward primer</td><td>1</td></tr>
+        <tr class="odd"><td>10 &mu;M reverse primer</td><td>1</td></tr>
+        <tr class="even"><td>5 ng/&mu;L plasmid</td><td>0.2</td></tr>
+        <tr class="odd"><td>Phusion polymerase</td><td>0.25</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Run it with the following programme.
+     <table class="reaction_mix">
+
+      <tbody>
+        <tr class="odd"><td>1.</td><td>98&deg;C</td><td>1 min.</td></tr>
+        <tr class="even"><td>2.</td><td>98&deg;C</td><td>20 sec.</td></tr>
+        <tr class="odd"><td>3.</td><td>60&deg;C</td><td>30 sec.</td></tr>
+        <tr class="even"><td>4.</td><td>72&deg;C</td><td>3 min.</td></tr>
+        <tr class="odd"><td>5.</td><td colspan="2">go to step 2. 29 times</td>
+        <tr class="even"><td>6.</td><td>72&deg;C</td><td>10 min.</td></tr>
+        <tr class="odd"><td>7.</td><td>12&deg;C</td><td>&infin;</td></tr>
+        <tr class="even"><td>8.</td><td>75&deg;C</td><td>20 min.</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li>After the PCR reaction is finished the machine will cool down to
+  12 &deg;C (PCR step 7). Add 1 &mu;L <span class="optimized">T4 DNA
+  polymerase</span> to the tube.</li>
+  <li>After 20 minutes add 0.5 &mu;L 500 mM EDTA to the tube and press
+  "next step". </li>
+  <li>When the run is finished purify the DNA with a Qiaquick PCR extraction
+  kit and resuspend in 50 &mu;L EB.</li>
+  <li>
+  Prepare the following ligation mix.
+    <table class="reaction_mix">
+      <thead>
+        <tr><th>component</th><th>volume (&mu;L)</th></tr>
+      </thead>
+
+      <tbody>
+        <tr class="odd"><td>H<sub>2</sub>O</td><td>7</td></tr>
+        <tr class="even"><td>10x DNA ligase buffer</td><td>2</td></tr>
+        <tr class="odd"><td>Concentrated DNA ligase</td><td>1</td></tr>
+        <tr class="even"><td>PCR product</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Incubate for 16 hours at 16 &deg;C</li>
+</ol>
+
+<div class="out_part">
+<h4>Comments on the protocol</h4>
+<p> Barcoded primers contain stretches of random nucleotides in 5'. It is
+more convenient to barcode only one of the primers because the PCR has
+a better yield and it reduces the formation of forked products.</p>
+
+<p>Forked PCR products have mismatched strands at one end. If only one
+primer is barcoded, half of the PCR products are forked, and if both
+primers are barcoded all the PCR products are forked.</p>
+
+<p>The treatment with T4 DNA polymerase removes the forks by generating
+a double-stranded barcode. This makes the PCR product fully
+double-stranded, so that it can be ligated.</p>
+</div>
+<span id="version">- version 0.6 -</span>
+</div><!-- end hRecipe -->
+{% endblock %}
+{% block section %}<div id="section" title="#protocols"></div>{% endblock %}

@@ -5,8 +5,11 @@ api_version: 1
 
 handlers:
 - url: /favicon\.ico
-  static_files: static/img/favicon.ico
-  upload: static/img/favicon\.ico
+  static_files: thegrandlocus_theme/static/images/favicon.ico
+  upload: thegrandlocus_theme/static/images/favicon.ico
+
+- url: /thegrandlocus_theme/static
+  static_dir: thegrandlocus_theme/static
 
 - url: /static
   static_dir: static
