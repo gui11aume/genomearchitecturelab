@@ -1,12 +1,17 @@
 {% extends "lab.html" %}
+
+{% block description %}
+    <meta name="description"
+        content="PhD position available at the Filion lab - bioinformatics & molecular biology laboratory at the CRG in Barcelona" />
+{% endblock %}
+
 {% block title %}Positions available at the Filion lab | The Grand Locus{% endblock %}
+
 {% block head %}
   <link rel="stylesheet" type="text/css" media="screen"
     href="/thegrandlocus_theme/static/css/gal.css" />
-
-  <script>$(document).ready(format_theme_style)</script>
-    <meta name="description" content="PhD position available at the Filion lab - bioinformatics & molecular biology laboratory at the CRG in Barcelona" />
 {% endblock %}
+
 {% block body %}
   <br/>
   <br/>
@@ -18,11 +23,36 @@
   <br/>
   <br/>
 
-  <h2>Position available</h2>
-  We have a PhD position. If you are interested to work with us, please
-  contact <script>print_mail('Guillaume Filion')</script>.
-  <div id="bottom_space"></div>
+  <h2>PhD position available</h2>
+  <h3>Why work with us?</h3>
+  Because we are situated on the beach, in Barcelona.
+
+  <h3>Sure, but, really... why work with us?</h3>
+  Because we like to share. We like to share our knowledge, and we like to share our enthusiasm about research. And actually, we consider this is our job.
+
+  <h3>The project</h3>
+  <p>The heart of the project is to understand what makes genes silent <i>in vivo</i>. Recent work has focused on gene activation, but surprisingly little is known about how genes are silenced in normal conditions. Our work suggests that the bulk of silencig in <i>Drosophila</i> does not require transcription repressors, nor repressive histone marks.</p>
+
+  <p>To further study this suprising observation, we are developing the TRiP (Thousands of Reporters in Parallel) technology. The essence of TRiP is to integrate a gene at thousands of different locations in a genome and study its transcription in the new context. In combination with publicly available datasets, this allows to answer the following questions:
+  <ol>
+    <li>Does the sequence of a gene determine its expression in every chromatin environment?</li>
+    <li>Does the local chromatin environment have a predictable effect on the expression of the gene?</li>
+    <li>Does the local topology have an predictable effect on the expression of the gene?</li>
+    <li>Do the same rules apply to all the genes?</li>
+  </ol>
+  </p>
+
+  <p>For more information about this line of research in our team, checkout the paragraph about <a href="/research-lines.html">Invasion landscapes</a>.
+
+  <h3>The position and the lab</h3>
+  <p>We are a newly created team at the CRG in Barcelona. "New" means we are small. "New" means we are dynamic. You can expect full training and support from the team leader. The CRG is a great place to work, with all the technical facilities, and more importantly the top scientists of Europe in a diverse range of fields. Check out the <a href="http://pasteur.crg.es/portal/page/portal/Internet/02_Research/01_Programmes">website of the CRG</a> for an overview of the research programmes.</p>
+
+  <p>The position is for 4 years. It involves complementary training at the Universitat Pompeu Fabra (UPF) in Barcelona.</p>
+
+  <h3>The candidate (you)</h3>
+  <p>This project involves <b>bench and computer work</b>. We are looking for a student with dual training, or with a training at the bench and a strong will to learn bioinformatics. If this is your case and you are interested in using genome-wide tools to understand transcription, send your application to <script>print_mail('Guillaume Filion')</script>... and if you qualify but do not wish to apply, we would still be happy to know what holds you back.</p>
 {% endblock %}
+
 {% block section %}
        <div id="section" title="#workwithus"></div>
 {% endblock %}
