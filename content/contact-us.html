@@ -1,0 +1,83 @@
+{% extends "lab.html" %}
+
+{% block description %}
+    <meta name="description"
+        content="Contact the Filion lab - bioinformatics & molecular biology laboratory at the CRG in Barcelona" />
+{% endblock %}
+
+{% block title %}Contact the Filion lab | The Grand Locus{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" media="screen"
+    href="/thegrandlocus_theme/static/css/gal.css" />
+
+  <!-- Google map scripts. -->
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBWEE5JfTKfRQkY-7vDfzaEkwksSglGCTc&sensor=true"
+      type="text/javascript"></script>
+  <script type="text/javascript">
+  function initialize() {
+    var map = new GMap2(document.getElementById("map_canvas"))
+    map.setCenter(new GLatLng(41.385450,2.194009), 4);
+    map.setMapType(G_SATELLITE_MAP);
+    map.setUIToDefault();
+    var we_are_here = new GLatLng(41.385450,2.194009);
+    map.addOverlay(new GMarker(we_are_here));
+  }
+
+  </script>
+  <!-- End Google map scripts. -->
+
+  <style>
+    #map_canvas {
+      float:right;
+      border:3px ridge #f00;
+      margin:auto;
+      width:60%;
+      height:500px;
+      solid:#979797;
+      background-color:#e5e3df;
+    }
+  </style>
+{% endblock %}
+
+{% block body_tags %}onload="initialize()"{% endblock %}
+
+{% block body %}
+
+  <br/>
+  <br/>
+<p class="bf_separator">
+  <span style="font-size:48pt">&#8226;</span><br/>
+  <span style="font-size:24pt">Contact us<br/></span>
+  <hr style="border:0px; color:black; background-color:black; width:70%; height:1px;"/>
+</p>
+  <br/>
+  <br/>
+
+  <p>For scientific or professional matters, please take direct contact with Guillaume Filion
+  <script>print_mail('by email')</script>.
+  <br/>
+  We are located in the Parc de Recerca Biomedica de Barcelona (PRBB). Our complete address is the following.</p>
+
+  <br/>
+  <br/>
+
+  <!-- The Google map -->
+  <div id="map_canvas"></div>
+  <div id="address" style="float:left;">
+  <hr/>
+  Genome Architecture Team<br/>
+  Centre of Genomic Regulation (CRG)<br/>
+  PRBB 6<sup>th</sup> floor<br/>
+  C/ Dr. Aiguader 88<br/>
+  E-08003 Barcelona<br/>
+  Spain<br/>
+  <hr/>
+  </div>
+
+  
+{% endblock %}
+
+{% block section %}
+       <div id="section" title="#contact"></div>
+{% endblock %}
