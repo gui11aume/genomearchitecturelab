@@ -1,34 +1,58 @@
-{% extends "lab.html" %}
+{% extends "base.html" %}
+
+{% macro filed_under(tag, pref) -%}
+<a href="{{pref}}/tag/{{tag[1]|e}}">{{tag[0]|e}}</a>
+{%- endmacro %}
+
 {% block body %}
+<!--
+<h2>The Lab Notes</h2>
+<h2><a href="index.html">The dangers of liftOver</a></h2>
 
-  <!-- JS-Cumulus -->
-  <script type="text/javascript" src="/js/JS-Cumulus/js-cumulus.js"></script>
-  <script type="text/javascript">
-    var theTagCloud;
-    var tags = [
-      new Tag("Journal Club", 100, "http://openjournalclub.thegrandlocus.com/"),
-      new Tag("The Wiki", 100, "http://wiki.thegrandlocus.com/"),
-      new Tag("Our Research", 100, "/research-lines.html"),
-      new Tag("Work with Us", 100, "/work-with-us.html"),
-      new Tag("The Blog", 100, "http://blog.thegrandlocus.com/"),
-      new Tag("The Team", 100, "/team.html"),
-      new Tag("Protocols", 100, "/protocols/list.html"),
-    ];
-    theTagCloud = new TagCloud(tags, 400, 400);
-  </script>
+<p class="post-info">Posted by <a href="/">Ricky Lim</a> | Filed under <a href="/">ENCODE</a>, <a href="/">LiftOver</a>  </p>
+  
+      <p><strong>FreshMedia</strong> is a free, W3C-compliant, CSS-based website template
+      by <a href="http://www.styleshout.com/">styleshout.com</a>. This work is
+      distributed under the <a rel="license" href="http://creativecommons.org/licenses/by/2.5/">
+      Creative Commons Attribution 2.5  License</a>, which means that you are free to
+      use and modify it for any purpose. All I ask is that you give me credit by including a <strong>link back</strong> to
+      <a href="http://www.styleshout.com/">my website</a>.
+      </p>
 
-  <br/>
-  <br/>
-  <br/>
-  <br/>
+      <p>
+      You can find more of my free template designs at <a href="http://www.styleshout.com/">my website</a>.
+      For premium commercial designs, you can check out
+      <a href="http://www.dreamtemplate.com" title="Website Templates">DreamTemplate.com</a>.
+      </p>
+  
+<p class="postmeta">		
+<a href="index.html" class="readmore">Read more</a> |
+<a href="index.html" class="comments">Comments (7)</a> |				
+<span class="date">February 02, 2008</span>	
+</p>
+-->
 
-  <div id="theTagCloud" style="width:50%; margin:0px auto;"></div>
+{% if tglpost %}
+<h1>Headlines from The Grand Locus</h1>
+<h2><a href="http://blog.thegrandlocus.com{{tglpost.path}}">{{tglpost.title|e}}</a></h2>
+<p class="post-info">Posted
+by <a href="http://blog.thegrandlocus.com/about">Guillaume Filion</a>
+| Filed under 
+  {% for tag in tglpost.tag_pairs %}{{
+      filed_under(tag, 'http://blog.thegrandlocus.com')
+  }}{% if not loop.last %},
+  {% else %}.{% endif %}{% endfor %}
+</p>
 
-  <div id="bottom_space"></div>
-  <script type="text/javascript">
-    var v = [1,2,3].map(function() {return Math.random()-.5});
-    var vector = new Vector(v[0], v[1], v[2]);
-    theTagCloud.Distribute(document.getElementById("theTagCloud")).
-        Animate(vector.Multiply(4));
-  </script>
+{{tglpost.summary|safe}}
+  
+<p class="postmeta">		
+<a href="http://blog.thegrandlocus.com{{tglpost.path}}" class="readmore">Read more</a> |
+<a href="http://blog.thegrandlocus.com{{tglpost.path}}#disqus_thread" class="comments">Comments</a> |				
+<span class="date">{{tglpost.pubdate}}</span>	
+</p>
+
+{% endif %}
+
+<br />	
 {% endblock %}

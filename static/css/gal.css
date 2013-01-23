@@ -1,0 +1,27 @@
+.out_part {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #ECF8FE;
+}
+
+.optimized {
+  font-weight: bold;
+  background: #ECF8FE;
+}
+
+table#colleagues td {
+  border: 0px solid transparent;
+  vertical-align: top;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+div.motto {
+  float: left;
+  padding: 11px;
+  border: 1px solid #EDEDED;
+}
+
+td.picture {
+  float: right;
+}
