@@ -15,7 +15,7 @@
 * { margin: 0; padding: 0; outline: 0 }
 
 body {
-	font: 11px/165% "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+	font: 12px/165% "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
 	color: #666666; 	
 	margin: 0; padding: 0 0 50px 0; 
 	background: #fff;
@@ -46,29 +46,44 @@ h1 {
 	font-size: 350%;	
 	font-weight: normal;
 	letter-spacing: -2px;
-	padding: 15px 10px 5px 10px;
+	/*padding: 15px 10px 5px 10px;*/
+	padding-bottom: 15px;
 	margin: 0;
   color: #0B9AC7;
 }
 h2 {
 	font-size: 200%;
 	color: #895F30;
-	padding: 20px 10px 5px 10px;
+	/*padding: 20px 10px 5px 10px;*/
+	padding-bottom: 10px;
 	margin: 0;
 }
 h3 {
 	font-size: 170%;	
 	font-weight: normal;
-	padding: 20px 10px 5px 10px;
+	/*padding: 20px 10px 5px 10px;*/
+	padding-top: 10px;
+	padding-bottom: 5px;
 	margin: 0;	
 }
+h3:first-child {
+  padding-top: 0px;
+}
 
-p, dl { padding: 10px; margin: 0; }
+/*p, dl { padding: 10px; margin: 0; }*/
+blockquote p { padding: 10px; margin; 0; }
 
+.text p {
+  text-indent: 2em;
+}
+
+/*
 ul, ol {
 	margin: 10px 20px;
 	padding: 0 20px;
 }
+*/
+
 ul { list-style: none; }
 
 dt {
@@ -315,7 +330,6 @@ input.button {
 	text-transform: none;
 	color: #755643;
 	width: 400px;
-	
 	/* change the values of top and left to adjust the position */
 	top: 190px; left: 35px;		
 }
@@ -402,6 +416,7 @@ input.button {
 
 /* footer */
 #footer-wrap {
+	font-size: 11px;
 	position: relative;
 	clear: both;
 	padding: 1em 0 2.5em 0;
@@ -414,11 +429,13 @@ input.button {
 }
 #footer-wrap h3 {
 	font: normal 1.8em/1.6em 'Trebuchet MS', Tahoma, sans-serif;
+	padding: 0px 10px 5px 10px;
 	text-transform: none;
 	letter-spacing: 0;
 	margin-left: 0;	
 	color: #666666;	
 }
+#footer-wrap p { padding: 10px; margin: 0; }
 #footer-content {	
 	margin: 0 auto;		
 	width: 880px;
@@ -454,7 +471,7 @@ input.button {
 }
 #footer-content .col {
 	width: 280px;
-	padding: 0 0 30px 0;			
+	padding: 0 0 20px 0;			
 	display: inline;
 }
 #footer-content .space-sep {
@@ -462,7 +479,7 @@ input.button {
 }
 #footer-content .col2 {
 	width: 285px;
-	padding: 0 0 30px 0;	
+	padding: 0 0 20px 0;	
 	display: inline;	
 }
 

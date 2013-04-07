@@ -75,7 +75,7 @@ function print_mail(text) {
 
 {% block head %}{% endblock %}
 </head>
-<body>
+<body{% block body_tags %}{% endblock %}>
 
 <!-- wrap starts here -->
 <div id="wrap-out"><div id="wrap">
@@ -168,9 +168,6 @@ function print_mail(text) {
                 </li>
                 <li><a href="http://blog.thegrandlocus.com/2012/07/The-geometry-of-style">The geometry of style -
                 <span>how to make the best of IMDB reviews?</span></a>
-                </li>
-                <li><a href="http://blog.thegrandlocus.com/2012/09/Focus-on-multiple-testing">Focus on multiple testing -
-                <span>how to avoid the traps of large datasets?</span></a>
                 </li>
                 <li><a href="http://blog.thegrandlocus.com/2013/03/one-shade-of-authorship-attribution">One shade of authorship attribution -
                 <span>How to identify the author of a text?</span></a>
