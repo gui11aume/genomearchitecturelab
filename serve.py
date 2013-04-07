@@ -1,59 +1,40 @@
 # -*- coding: utf-8 -*-
-import setup_django_version
 
 import os
-import re
+import sys
 import gzip
-import urllib
+import json
+import logging
 from StringIO import StringIO
 
+import webapp2
+import jinja2
+
 from google.appengine.ext import db
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
-from google.appengine.ext.webapp.template import _swap_settings
 from google.appengine.api import urlfetch
 
-import django.conf
-from django import template
-from django.template import loader
+import utils
 
-
-TEMPLATE_DIRS = ['thegrandlocus_theme/templates', 'content']
-
-
-def render_template(template_name, template_vals=None):
-   """Shameless port of the function of the same name
-   by Nick Johnson from Bloggart."""
-
-   old_settings = _swap_settings({'TEMPLATE_DIRS': TEMPLATE_DIRS})
-   try:
-      tpl = loader.get_template(template_name)
-      rendered = tpl.render(template.Context(template_vals))
-   finally:
-      _swap_settings(old_settings)
-   return rendered
-
-
+# Sitemap shit.
 class Sitemap(db.Model):
    body = db.BlobProperty()
 
-
-class SitemapServer(webapp.RequestHandler):
+class SitemapServer(webapp2.RequestHandler):
   def get(self):
      self.response.headers['Content-Type'] = 'application/x-gzip'
      sitemap = Sitemap.get_by_key_name('sitemap')
      self.response.out.write(sitemap.body)
 
-
-class SitemapRegenerator(webapp.RequestHandler):
+class SitemapRegenerator(webapp2.RequestHandler):
+   # Need to manually query "/regenerate_sitemap".
    def get(self):
       content_paths = os.walk('content')
       paths = [
-          re.sub('content/', '/', os.path.join(root, file_name)) \
-          for root,dirs,files in content_paths \
+          re.sub('content/', '/', os.path.join(BASE_DIR, file_name))
+          for root,dirs,files in content_paths
           for file_name in files
       ]
-      sitemap = render_template(
+      sitemap = utils.render_template(
             'sitemap.xml',
             {'paths': paths, 'host': 'lab.thegrandlocus.com'}
       )
@@ -64,43 +45,53 @@ class SitemapRegenerator(webapp.RequestHandler):
             key_name = 'sitemap',
             body = s.read()
       ).put()
+      # Ping google.
       google_url = 'http://www.google.com/webmasters/tools/ping?' \
          + 'sitemap=http://lab.thegrandlocus.com/sitemap.xml.gz'
       response = urlfetch.fetch(google_url, '', urlfetch.GET)
       # Does not return, but raise a warning if something goes wrong.
       if response.status_code / 100 != 2:
-         raise Warning(
-             "Google Sitemap ping failed",
-             response.status_code,
-             response.content
+         logging.warn(
+             ("ping failed", response.status_code, response.content)
          )
       else:
          self.response.out.write(response.content)
 
 
-
-
-class HardHTMLServer(webapp.RequestHandler):
+# Static server shit.
+class HardHTMLServer(webapp2.RequestHandler):
    """Server for 'hard' HTML files. Provides only Django templating.
    All hard HTML files have to be in the 'templates' directory."""
 
    def get(self, path):
-      path = re.sub('/$', '', path)
       if path == '':
          path = 'index.html'
-      self.response.out.write(render_template(path))
+      if not path.endswith('.html'):
+         path += '.html'
+
+      template_vals = {}
+
+      # Fetch last blog post from The Grand Locus.
+      if path == 'index.html':
+         tglurl = 'http://blog.thegrandlocus.com/lastpost.json'
+         response = urlfetch.fetch(tglurl, '', urlfetch.GET)
+         if response.status_code / 100 != 2:
+            tglpost = None
+         else:
+            tglpost = json.loads(response.content)
+            tglpost['summary'] = utils.fix_html(tglpost['summary'])
+         template_vals.update({'tglpost': tglpost})
+
+      try:
+         self.response.out.write(utils.render_template(path.lower(),
+               template_vals))
+      except jinja2.TemplateNotFound:
+         self.error(404)
+         self.response.out.write(utils.render_template('404.html'))
 
 
-application = webapp.WSGIApplication([
+app = webapp2.WSGIApplication([
   ('/regenerate_sitemap', SitemapRegenerator),
   ('/sitemap.xml.gz', SitemapServer),
   ('/(.*)', HardHTMLServer),
 ])
-
-
-def main():
-   run_wsgi_app(application)
-
-
-if __name__ == '__main__':
-    main()

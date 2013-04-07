@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block body %}
+<br/>
+<br/>
+<div class="hrecipe">
+<h2 class="fn"><i>E. coli</i> electroporation</h2>
+
+<p class="summary">This protocol has been
+<span class="optimized">optimized</span> for efficiency.
+A major source of failure during bacteria electroporation is the occurrence
+of an electric arc, which is usually due to the presence of salts in the
+solution. Electric arcs sometimes produce a visible and audible flash, but
+they can also go unnoticed. Some machines indicate the presence of an arc
+on the display, if it occurs.
+Since DNA is usually kept in buffers containing salts, it is
+important to use a small volume of solution. It is also important to
+respect the volumes indicated in the protocol, as they determine the
+resistance of the solution and the efficiency of the shock.
+By pressing the “actual time” button, you can see the time constant of the
+shock. The value should be between 4.0 and 5.0. If not, an electric arc
+probably occurred. It is recommended that you write down the time constant
+of every electroporation for troubleshooting purposes.</p>
+
+<h3>Material:</h3>
+<ul>
+  <li class="ingredient">
+    <span class="value">50</span>
+    <span class="type">&mu;L</span> competent cells
+  </li>
+  <li class="ingredient">
+    <span class="company">Bio-Rad</span> 0.1 cm cuvette (REF:
+    <span class="product_reference">165-2089</span>)
+  </li>
+  <li class="ingredient">
+    <span class="company">Bio-Rad</span> Gene Pulser II (REF:
+    <span class="product_reference">165-2105</span>)
+  </li>
+  <li class="ingredient">plasmid DNA</li>
+  <li class="ingredient">LB plates with proper antibiotics</li>
+</ul>
+
+<h3 class="instructions">Procedure:</h3>
+<ol>
+  <li>Take competent cells from -80&deg;C freezer and thaw them on ice.</li>
+  <li>Put the cuvette on ice.</li>
+  <li>Pipette <span class="optimized">1-2 &mu;L</span> of plasmid DNA
+    into <span class="optimized">50 &mu;L</span> competent cells
+    when thawed. These volumes have a major impact on the electric shock,
+    increasing them may cause an electric arc.</li>
+  <li>Transfer the mix into the cuvette.</li>
+  <li>Choose programme Ec1 or set voltage to 2.5 kV on Gene Pulser II.</li>
+  <li>Place the cuvette in the holder, press the “shock” button(s).</li>
+  <li>Remove the cuvette from holder, immediately add 150 &mu;L
+    LB to the cuvette.</li>
+  <li>Spread everything on LB plate</li>
+  <li>Keep LB plates at 37&deg;C and pick colonies after more than 12 hours incubation.</li>
+</ol>
+
+<br/>
+- version <span calss="version">0.5</span>,
+<abbr calss="pudate" title="2013-01-19">January 19 2013</abbr> -
+</div><!-- end hRecipe -->
+{% endblock %}
+{% block section %}<div id="section" title="#protocols"></div>{% endblock %}

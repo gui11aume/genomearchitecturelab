@@ -1,6 +1,0 @@
-[submodule "js/JS-Cumulus"]
-	path = js/JS-Cumulus
-	url = git://github.com/jerone/JS-Cumulus/
-[submodule "thegrandlocus_theme"]
-	path = thegrandlocus_theme
-	url = git@github.com:gui11aume/thegrandlocus_theme

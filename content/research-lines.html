@@ -1,20 +1,10 @@
-{% extends "lab.html" %}
+{% extends "base.html" %}
 {% block body %}
-<br/>
-<br/>
-<p class="bf_separator">
-  <span style="font-size:48pt">&#8226;</span><br/>
-  <span style="font-size:24pt">Research Lines<br/></span>
-  <hr style="border:0px; color:black; background-color:black; width:70%; height:1px;"/>
-</p>
-
-<br/>
-<br/>
-
+<h1>Research lines</h1>
 <p>The 20th century has been the triumph of genetics. However, we fully understand a mere 3% of the human genome - that is, the coding genome. More challenging is to understand how this tiny fraction is orchestrated by the much larger <strong>regulatory genome</strong>. What does the regulatory genome consist of? How does it encode information? How is it organized and how does it evolve? Contrary to the coding genome, the information of the regulatory genome is <strong>context-dependent</strong>. For example, the same promoter can have different levels of activity, the same enhancers can activate one gene or another, depending on available transcription factors and on the local chromatin marks. So the DNA sequence is not enough to understand the function of regulatory sequences. Our research lines focus on the influence of the chromatin context on transcription; and on the co-evolution between the genome and its chromatin context.</p>
 
 <h2>Invasion landscapes</h2>
-<p>Distinct chromatin types can "fight" for a genome territory. This was suggested by an early observation of  <i>Drosophila</i> genetics called Position Effect Variegation (PEV). In mutant the PEV strains, the white gene is translocated near a centromere, which is coated in heterochromatin, rich in repeated sequences and poor in genes. Even though the sequence of the gene is not mutated, these flies have a characteristic mottled white eye. This reflects random expression levels, mirroring the invasion of heterochromatin into the territory of the gene.</p>
+<p>Distinct chromatin types can "fight" for a genome territory. This was suggested by an early observation of  <i>Drosophila</i> genetics called Position Effect Variegation (PEV). In mutant PEV strains, the white gene is translocated near a centromere, which is coated in heterochromatin, rich in repeated sequences and poor in genes. Even though the sequence of the gene is not mutated, these flies have a characteristic mottled white eye. This reflects random expression levels, mirroring the invasion of heterochromatin into the territory of the gene.</p>
 
 <p>Intriguingly, some genes seem to be immune to PEV (in particular the ones that naturally map to the centromeres). So the question remains if and how the phenomenon happens in physiological conditions. How can a chromatin type invade a territory and replace the local chromatin? And what is the role of the DNA sequence in allowing this transition to take place?</p>
 
@@ -41,6 +31,4 @@
 
   <div id="bottom_space"></div>
 {% endblock %}
-{% block section %}
-       <div id="section" title="#researchlines"></div>
-{% endblock %}
+{% block section %}<div id="section" title="#research"></div>{% endblock %}
