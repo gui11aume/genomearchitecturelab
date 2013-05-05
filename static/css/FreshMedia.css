@@ -77,12 +77,10 @@ blockquote p { padding: 10px; margin; 0; }
   text-indent: 2em;
 }
 
-/*
 ul, ol {
 	margin: 10px 20px;
 	padding: 0 20px;
 }
-*/
 
 ul { list-style: none; }
 
