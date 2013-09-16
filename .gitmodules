@@ -1,0 +1,4 @@
+[submodule "lib/HTMLEditor"]
+        path = lib/HTMLEditor
+        url = git://github.com/gui11aume/HTMLEditor.git
+
