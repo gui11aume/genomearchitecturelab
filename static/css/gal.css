@@ -10,7 +10,7 @@
   background: #ECF8FE;
 }
 
-table#colleagues td {
+table.colleagues td {
   border: 0px solid transparent;
   vertical-align: top;
   padding-top: 17px;
