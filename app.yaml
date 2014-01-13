@@ -2,19 +2,31 @@ application: genomearchitecturelab
 version: live
 runtime: python27
 api_version: 1
-threadsafe: true
+threadsafe: false
 
 libraries:
 - name: jinja2
   version: latest
 
+builtins:
+- deferred: on
+- remote_api: on
+
 handlers:
 - url: /favicon\.ico
   static_files: static/images/favicon.ico
-  upload: static/images/favicon.ico
+  upload: static/images/favicon\.ico
+
+- url: /_ah/queue/deferred
+  script: deferred.py
+  login: admin
+
+- url: /admin/.*
+  script: admin.app
+  login: admin
 
 - url: /static
   static_dir: static
 
 - url: /.*
-  script: serve.app
+  script: static.app

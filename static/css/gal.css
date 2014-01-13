@@ -26,3 +26,39 @@ div.motto {
 td.picture {
   float: right;
 }
+
+/* List formatting */
+ul#archive {
+  marign-left: 0em;
+  padding-left: 0em;
+  text-align: center;
+}
+
+#archive li {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.archive_link  {
+  font-size: x-large;
+}
+
+.tags {
+  color: #777;
+}
+
+#plusone {
+  float: left;
+  width: 75px;
+}
+
+#like {
+  float: left;
+  width: 75px;
+}
+
+#tweet {
+  float: left;
+  width: 93px;
+}
+

@@ -2,3 +2,6 @@
         path = lib/HTMLEditor
         url = git://github.com/gui11aume/HTMLEditor.git
 
+[submodule "lib/aetycoon"]
+	path = lib/aetycoon
+	url = git@github.com:gui11aume/aetycoon

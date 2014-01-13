@@ -74,6 +74,7 @@ function print_mail(text) {
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
 {% block head %}{% endblock %}
+{% block admin_head %}{% endblock %}
 </head>
 <body{% block body_tags %}{% endblock %}>
 
@@ -124,7 +125,7 @@ function print_mail(text) {
 #}
 			</ul>	
 				
-			<h3>Some links</h3>
+			<h3>External links</h3>
 			<ul class="sidemenu">
 				<li><a href="http://blog.thegrandlocus.com/">The Grand Locus</a></li>
 				<li><a href="http://pasteur.crg.es/portal/page/portal/Internet/">Centre for Genomic Regulation (CRG)</a></li>
@@ -145,91 +146,10 @@ function print_mail(text) {
 	</div>
 		
 	<!-- footer starts here -->	
-	<div id="footer-wrap"><div id="footer-content">
-	
-		<div class="col float-left space-sep">
-		
-			<h3>The Grand Locus</h3>
-
-        <p>
-        <a href="http://blog.thegrandlocus.com">The
-        Grand Locus</a> is my blog. The one thing it does not talk 
-        about is my research. Still, I like to share it so the latest
-        post is on display on the front page of the lab.
-        </p>
-
-        <p>
-        Below are some of the most popular posts.
-        </p>
-
-			<ul class="col-list">				
-                <li><a href="http://blog.thegrandlocus.com/2013/06/how-to-stop-sucking-and-be-awesome-instead">How to stop sucking... -
-                <span>The secret of a successful PhD.</span></a>
-                </li>
-                <li><a href="http://blog.thegrandlocus.com/2013/03/genetics-and-racism-3">Genetics and racism (3) -
-                <span>do human races exist?</span></a>
-                </li>
-                <li><a href="http://blog.thegrandlocus.com/2012/07/The-geometry-of-style">The geometry of style -
-                <span>how to make the best of IMDB reviews?</span></a>
-                </li>
-			</ul>
-
-		</div>
-		
-		<div class="col float-left">
-		
-			<h3>Coming soon...</h3>
-			
-			<p>
-      This website is still under construction. We are working on
-      giving better accounts of our results to the public and I
-      hope to host a technical blog to post some of our crunchiest
-      results ahead of publication.
-			</p>
-
-      <p>
-      By the way, if you have any suggestion about this or anything
-      else, you can address them directly to
-      <script type="text/javascript">print_mail('Guillaume Filion')</script>.
-			
-		</div>		
-	
-		<div class="col2 float-right">
-		
-			<h3>About</h3>			
-			
-			<p>
-      The golden rules of our team are Freedom, Creativiy,
-      Teamwork and Openness, because we believe that they are the
-      pillars of Enthusiasm. And research without Enthusiasm is
-      like... like... well, it's just not cool.
-      </p>
-
-      <p>
-      If you want to know more about what we do, you can read more abouts
-      our <a href="/research-lines">research lines.</a>
-      </p>
-
-			<p>
-      <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">
-      &copy;</span> copyleft 2013 <strong>Filion Lab</strong><br /> 
-			<a href="http://www.bluewebtemplates.com/" title="Website Templates">website templates</a> by <a href="http://www.styleshout.com/">styleshout</a>
-         	</p><br />
-
-			<p>
-				<a href="/index.html">Home</a> |
-				<a href="/sitemap.xml.gz">Sitemap</a>
-{#				<a href="/index.html">RSS Feed</a> |
-                <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> |
-		   	    <a href="http://validator.w3.org/check/referer">XHTML</a>
-#}
-			</p>
-			
-		</div>		
-			
-	</div></div>
-	<div class="clearer"></div>
+{% block footer %}
+{% endblock %}
 	<!-- footer ends here -->
+	<div class="clearer"></div>
 
 <!-- wrap ends here -->
 </div></div>

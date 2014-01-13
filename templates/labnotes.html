@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Filion lab | the Lab Notes{% endblock %}
+
+{% block body %}
+<h2 style="text-align:center;">the Lab Notes</h2>
+
+<br />
+<br />
+
+<ul id="archive">
+  {% for post in posts %}
+  <li><a class="archive_link" href="{{config.url_prefix}}{{post.path}}">{{post.title}}</a><br/><span class="tags">{{ post.tags|join(', ')|e}}</span></li>
+  {% endfor %}
+</ul>
+{% endblock %}
