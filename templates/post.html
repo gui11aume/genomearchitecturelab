@@ -17,8 +17,8 @@
 
   <span itemscope itemtype="http://data-vocabulary.org/Person">
   By <a class="url fn n grey_link"
-  href="https://plus.google.com/102441667247494916086?rel=author"><span
-  itemprop="name">Guillaume Filion</span></a></span> | Filed under 
+  href="{{ post.authref }}?rel=author"><span
+  itemprop="name">{{ post.author }}</span></a></span> | Filed under 
   {% for tag in post.tag_pairs %}{{
       macros.filed_under(tag, config.url_prefix)
   }}{% if not loop.last %},
@@ -97,5 +97,5 @@
 {% endblock %}
 
 {% block copyright %}
-<div style="float:right; clear:both; font-size:small;">Content &copy; 2014 <a rel="author" href="https://plus.google.com/102441667247494916086">Guillaume Filion</a>. All Rights Reserved blah blah.</div>
+<div style="float:right; clear:both; font-size:small;">Content &copy; 2014 <a rel="author" href="{{ post.authref }}">{{ post.author }}</a>. All Rights Reserved blah blah.</div>
 {% endblock %}

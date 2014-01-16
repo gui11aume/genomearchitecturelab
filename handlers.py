@@ -13,6 +13,7 @@ from google.appengine.ext import deferred
 from google.appengine.ext.webapp import blobstore_handlers
 
 import config
+import contributors
 import markup
 import models
 import blobmodels
@@ -97,6 +98,8 @@ class PostHandler(BaseHandler):
 
       post_is_draft = self.request.get('draft')
       title = self.request.get('title') or 'no title'
+      author = self.request.get('author') or 'anonymous'
+      authref = contributors.ref.get(author, '/')
       body = self.request.get('body') or 'no body'
 
       if post is None:
@@ -106,6 +109,8 @@ class PostHandler(BaseHandler):
          )
       else:
          post.title = title
+         post.author = author
+         post.authref = authref
          post.body = body
       post.body_markup = self.request.get('body_markup')
       post.tags = set([

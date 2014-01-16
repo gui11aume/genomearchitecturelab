@@ -1,9 +1,6 @@
 # Name of the blog
 blog_name = 'Genome Architecture'
 
-# Your name (used for copyright info)
-author_name = 'Guillaume Filion'
-
 # (Optional) slogan
 slogan = 'An Architecture for the Genome'
 

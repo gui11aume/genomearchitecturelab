@@ -20,7 +20,7 @@
 	<updated>{{entry.published_tz.strftime('%Y-%m-%dT%H:%M:%SZ')}}</updated>
 	<published>{{entry.published_tz.strftime('%Y-%m-%dT%H:%M:%SZ')}}</published>
         <author>
-            <name>{{config.author_name}}</name>
+            <name>{{post.author}}</name>
             <uri>http://{{config.host}}{{config.url_prefix}}/</uri>
         </author>
         <content type="html">
