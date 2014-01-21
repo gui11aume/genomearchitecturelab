@@ -62,3 +62,21 @@ ul#archive {
   width: 93px;
 }
 
+#postbody {
+  font-size: 110%;
+}
+
+#postbody p {
+  text-indent: 1.5em;
+  margin-bottom: 5px;
+}
+
+/* Post edit */
+
+#edit textarea, input {
+  width: 100%;
+}
+
+#message {
+  height: 400px;
+}

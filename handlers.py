@@ -306,17 +306,19 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
       If the MIME type is image, save it to the datastore, else
       delete."""
 
-      blob_info = self.get_uploads('file')[0]
+      upload = self.get_uploads('file')
 
-      # Check that uploaded file is an image. Otherwise delete.
-      if re.match('^image/', blob_info.content_type):
-         img = blobmodels.BlobImage(
-                   key_name = blob_info.filename,
-                   ref = blob_info.key()
-               )
-         img.put()
-      else:
-         blob_info.delete()
+      if upload:
+         blob_info = upload[0]
+         # Check that uploaded file is an image. Otherwise delete.
+         if re.match('^image/', blob_info.content_type):
+            img = blobmodels.BlobImage(
+                      key_name = blob_info.filename,
+                      ref = blob_info.key()
+                  )
+            img.put()
+         else:
+            blob_info.delete()
 
       self.redirect("/admin/")
 

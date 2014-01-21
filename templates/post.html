@@ -23,12 +23,14 @@
       macros.filed_under(tag, config.url_prefix)
   }}{% if not loop.last %},
   {% else %}.{% endif %}{% endfor %}
-
   <br />
   <br />
-
   </p>
+
+  <span id="postbody">
   {{post.rendered|safe}}
+  </span>
+
   <br />
 
   <div class="postmeta">
