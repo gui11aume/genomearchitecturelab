@@ -5,7 +5,7 @@ blog_name = 'Genome Architecture'
 slogan = 'An Architecture for the Genome'
 
 # The hostname this site will primarially serve off (used for Atom feeds)
-host = 'lab.thegrandlocus.com'
+host = 'www.genomearchitecture.com'
 
 # Defines the URL organization to use for blog postings. Valid substitutions:
 #   slug - the identifier for the post, derived from the title
