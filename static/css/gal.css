@@ -71,6 +71,10 @@ ul#archive {
   margin-bottom: 5px;
 }
 
+#prev_next {
+  text-align:center;
+}
+
 /* Post edit */
 
 #edit textarea, input {
@@ -79,4 +83,58 @@ ul#archive {
 
 #message {
   height: 400px;
+}
+
+code {
+  color: black;
+  font-size: 11pt;
+  background-color:#f0f0f0;
+}
+
+/* prettyprint */
+div.highlight {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  font-size: 11pt;
+  background-color:#f6f6f6;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #aaa;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+span.se, span.sd {
+  color: #c09;
+}
+
+span.ne {
+  font-weight: bold;
+  color: #39c;
+}
+
+span.nf {
+  font-weight: bold;
+  color: black;
+}
+
+span.s, span.kc {
+  color: #06a;
+}
+
+span.kn {
+  font-weight: bold;
+  color: purple;
+}
+
+span.k, span.kr {
+  font-weight: bold;
+  color: #06a;
+}
+
+span.c, span.c1 {
+  color: #90c4fa;
 }
