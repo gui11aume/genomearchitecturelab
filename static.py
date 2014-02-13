@@ -61,7 +61,7 @@ def get(path):
 
    # Addresses are case-insensitive. We also strip the legacy
    # "htm" or "html", or any other extension.
-   path = re.sub(r'\.html?$', '', path).lower() if path else '/index'
+   path = re.sub(r'\.html?$', '', path).lower() if path else '/'
 
    # Try to retrieve the content from memcache.
    entity = memcache.get(path)
