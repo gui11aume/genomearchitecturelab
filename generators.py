@@ -110,6 +110,7 @@ class PostContentGenerator(ContentGenerator):
       return
     template_vals = {
         'post': post,
+        'path': post.path
     }
     prev, next = cls.get_prev_next(post)
     if prev is not None:
@@ -138,6 +139,7 @@ class PostPrevNextContentGenerator(PostContentGenerator):
       return
     template_vals = {
         'post': post,
+        'path': post.path,
     }
     prev, next = cls.get_prev_next(post)
     if prev is not None:

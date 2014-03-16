@@ -95,8 +95,7 @@ code {
 div.highlight {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px 15px 10px 15px;
   text-align: left;
   font-size: 11pt;
   background-color:#f6f6f6;
