@@ -87,7 +87,7 @@ ul#archive {
 
 code {
   color: black;
-  font-size: 11pt;
+  font-size: 10pt;
   background-color:#f0f0f0;
 }
 
@@ -97,7 +97,7 @@ div.highlight {
   margin-bottom: 20px;
   padding: 10px 15px 10px 15px;
   text-align: left;
-  font-size: 11pt;
+  font-size: 10pt;
   background-color:#f6f6f6;
   border-style: solid;
   border-width: 1px;
