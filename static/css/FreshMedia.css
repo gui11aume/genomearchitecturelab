@@ -78,8 +78,10 @@ blockquote p { padding: 10px; margin; 0; }
 }
 
 ul, ol {
-	margin: 10px 20px;
-	padding: 0 20px;
+	margin: 0px;
+	padding: 0px;
+	/* margin: 10px 20px; */
+	/* padding: 0 20px; */
 }
 
 ul { list-style: none; }

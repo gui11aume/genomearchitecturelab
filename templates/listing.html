@@ -13,6 +13,12 @@
 
 {% block body %}
 
+  <h1>The Lab Notes</h1>
+  <p>The main theme of our research is to understand how gene regulation 
+  and genome organization tie in with each other. The <strong>Lab
+  Notes</strong> are the latest headlines from the lab, featuring a
+  collection of random thoughts and useful code snippet.</p>
+
   {% for post in posts %}
   <div id="post_summary_div">
   <h2><a class="dark_link" href="{{config.url_prefix}}{{post.path}}">{{post.title|e}}</a></h2>
@@ -103,8 +109,8 @@
                 <li><a href="http://blog.thegrandlocus.com/2013/06/how-to-stop-sucking-and-be-awesome-instead">How to stop sucking... -
                 <span>The secret of success.</span></a>
                 </li>
-                <li><a href="http://blog.thegrandlocus.com/2013/03/genetics-and-racism-3">Genetics and racism (3) -
-                <span>Do human races exist?</span></a>
+                <li><a href="">A flurry of copycats on PubMed -
+                <span>How similar can scientific papers be?</span></a>
                 </li>
                 <li><a href="http://blog.thegrandlocus.com/2012/07/The-geometry-of-style">The geometry of style -
                 <span>How to analyze IMDB reviews?</span></a>
