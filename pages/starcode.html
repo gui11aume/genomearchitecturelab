@@ -3,147 +3,152 @@
 <h1>Starcode</h1>
 
 <h2>Index</h2>
-<ol>
-  <li>What is starcode?</li>
-  <li>Source file list.</li>
-  <li>Compilation and installation.</li>
-  <li>Running starcode.</li>
-  <li>File formats.</li>
-  <li>License.</li>
-  <li>References.</li>
-</ol>
+<ul>
+  <li><a href="#whatis">What is starcode?</a></li>
+  <li><a href="#download">Downloading.</a></li>
+  <li><a href="#source">Source file list.</a></li>
+  <li><a href="#install">Compilation and installation.</a></li>
+  <li><a href="#run">Running starcode.</a></li>
+  <li><a href="#formats">File formats.</a></li>
+  <li><a href="#license">License.</a></li>
+  <li><a href="#refs">References.</a></li>
+</ul>
 
-<h2>What is starcode?</h2>
+<h2><a name="whatis">What is starcode?</a></h2>
 <p>Starcode is an exact and fast DNA sequence clustering software. Sequence
-clustering is performed based on a Levenshtein distance metric [1].
-Typically, a file containing a set of related DNA sequences is passed as
-input, jointly with a parameter specifying the desired cluster distance.
-Starcode aligns and computes the distance between all the sequence pairs
-[2] and prints a line for each cluster containing: canonical DNA sequence,
-sequence count and the list of sequences that belong to the cluster.
+clustering is performed based on a Levenshtein distance metric
+<a href="#ref1">[1]</a>. Typically, a file containing a set of related
+DNA sequences is passed as input, jointly with a parameter specifying the
+desired cluster distance. Starcode aligns and computes the distance between all
+the sequence pairs <a href="#ref2">[2]</a> and prints a line for each
+cluster containing: canonical DNA sequence, sequence count and the list of
+sequences that belong to the cluster.
 </p>
 
 <p>Starcode has many applications in the field of biology, such as DNA/RNA
 motif recovery, barcode clustering, sequencing error recovery, etc.
 </p>
 
-<h2>Source file list</h2>
-<ul>
-  <li><strong>main-starcode.c</strong>         Starcode main file (parameter parsing).</li>
-  <li><strong>starcode.c</strong>              Main starcode algorithm.</li>
-  <li><strong>starcode.h</strong>              Main starcode algorithm header file.</li>
-  <li><strong>trie.c</strong>                  Trie search and construction functions.</li>
-  <li><strong>trie.h</strong>                  Trie functions header file.</li>
-  <li><strong>Makefile</strong>                Make instruction file.</li>
-</ul>
-
-<h2>Compilation and installation</h2>
-<p>To install starcode you first need to clone or manually download the 
-repository content from github:
+<h2><a name="download">Downloading</a></h2>
+<p>You can download the latest version of the source files from 
+<a href="https://github.com/gui11aume/starcode/archive/master.zip">here</a> 
+or clone the git repository from github:
 </p>
 
-<p><pre>
- > git clone git://github.com/gui11aume/starcode.git
-</pre></p>
+<div class="highlight"><pre>
+git clone git://github.com/gui11aume/starcode.git
+</pre></div>
 
-<p>the files should be downloaded in a folder named 'starcode'. To compile
+<h2><a name="source">Source file list</a></h2>
+<ul>
+  <li><strong>main-starcode.c</strong>    Starcode main file (parameter parsing).</li>
+  <li><strong>starcode.c</strong>         Main starcode algorithm.</li>
+  <li><strong>starcode.h</strong>         Main starcode algorithm header file.</li>
+  <li><strong>trie.c</strong>             Trie search and construction functions.</li>
+  <li><strong>trie.h</strong>             Trie functions header file.</li>
+  <li><strong>Makefile</strong>           Make instruction file.</li>
+</ul>
+
+<h2><a name="install">Compilation and installation</a></h2>
+
+<p>The files should be downloaded in a folder named 'starcode'. To compile
 just change the directory to 'starcode' and run make (Mac users require
 'xcode', available at the Mac Appstore):
 </p>
 
-<p><pre>
- > cd starcode
- > make
-</pre></p>
+<div class="highlight"><pre>
+cd starcode
+make
+</pre></div>
 
 <p>a binary file 'starcode' will be created. You can optionally make a
 symbolic link to execute starcode from any directory:
 </p>
 
-<p><pre>
- > sudo ln -s ./starcode /usr/bin/starcode
-</pre></p>
+<div class="highlight"><pre>
+sudo ln -s ./starcode /usr/bin/starcode
+</pre></div>
 
-<h2>Running starcode</h2>
+<h2><a name="run">Running starcode</a></h2>
 <p>Starcode runs on Linux and Mac. It has not been tested on Windows.
 </p>
 
 <p>List of arguments:
 </p>
 
-<p><pre>starcode [-vs] [-d#] [-t#] [-i] INPUT_FILE [-o OUTPUT_FILE]
-</pre></p>
+<div class="highlight"><pre>
+starcode [-vs] [-d#] [-t#] [-i] INPUT_FILE [-o OUTPUT_FILE]
+</pre></div>
   
 <p><strong>-v or --verbose</strong>
 </p>
-<p>Verbose. Prints verbose information to the standard error channel.
-</p>
+<div class="postmeta">Verbose. Prints verbose information to the standard error channel.
+</div>
 
 <p><strong>-i or --input</strong> <em>file</em>
 </p>
-<p>Specifies input file.
-</p>
+<div class="postmeta">Specifies input file.
+</div>
 
 <p><strong>-o or --output</strong> <em>file</em>
 </p>
-<p>Specifies output file. When not set, standard output is used instead.
-</p>
+<div class="postmeta">Specifies output file. When not set, standard output is used instead.
+</div>
 
 <p><strong>-d or --distance</strong> <em>distance</em>
 </p>
-     <p>Defines the maximum Levenshtein distance for clustering.
-     </p><p>Default is 3.
-     </p>
-</p>
+     <div class="postmeta">Defines the maximum Levenshtein distance for clustering.
+     <br>Default is 3.
+     </div>
 
 <p><strong>-t or --threads</strong> <em>threads</em>
 </p>
-     <p>Defines the maximum number of parallel threads.
-     </p><p>Default is 1.
-     </p>
-</p>
+<div class="postmeta">Defines the maximum number of parallel threads.
+     <br>Default is 1.
+     </div>
 
 <p><strong>-s or --spheres</strong>
 </p>
-<p>When specified, sphere clustering algorithm is performed in the
+<div class="postmeta">When specified, sphere clustering algorithm is performed in the
      clustering phase, instead of the default message passing algorithm.
-</p>
+</div>
 
 <p><strong>-h or --help</strong>
 </p>
-<p>Prints usage information.
-</p>
+<div class="postmeta">Prints usage information.
+</div>
 
-<h2>File formats</h2>
+<h2><a name='formats'>File formats</a></h2>
+
 <h3>Supported input file formats:</h3>
 
 <h4>Plain text:</h4>
-
-<p>Consists of a file containing one sequence per line. Only the standard
-    DNA-base characters are supported ('A', 'C', 'G', 'T'). The sequences
+<p>Consists of a file containing one sequence per line. The standard DNA-base
+    characters are supported ('A', 'C', 'G', 'T', 'N'). The sequences
     may not contain empty spaces at the beginning or the end of the string,
     as these will be counted as alignment characters. The file may not
     contain empty lines as these will be considered as zero-length sequences.
     The sequences do not need to be sorted and may be repeated.
     </p>
 
-<p><pre>
-    Example:
-    TTACTATCGATCATCATCGACTGACTACG
-    ACTGCATCGACTAGCTACGACTACGCTACCATCAG
-    TTACTATCGATCATCATCGACTGACTAGC
-    ACTACGACTACGACTCAGCTCACTATCAGC
-    GCATCGACCGCTACTACGCATACTACGACATC
-</pre><p>
+    <p>Example:
+    </p>
+<div class="postmeta"><pre>
+TTACTATCGATCATCATCGACTGACTACG
+ACTGCATCGACTAGCTACGACTACGCTACCATCAG
+TTACTATCGATCATCATCGACTGACTAGC
+ACTACGACTACGACTCAGCTCACTATCAGC
+GCATCGACCGCTACTACGCATACTACGACATC
+</pre></div>
 
 <h4>Plain text with sequence count:</h4>
 <p>If the count of the sequences is known, it may be specified in the input
     file using the following format:
     </p>
     
-    <p><pre>
-      [SEQUENCE]\t[COUNT]\n
-    </pre><p>
+<div class="highlight"><pre>
+[SEQUENCE]\t[COUNT]\n
+</pre></div>
 
     <p>Where '\t' denotes the TAB character and '\n' the NEWLINE character.
     The sequences do not need to be sorted and may be repeated as well. If
@@ -152,43 +157,73 @@ symbolic link to execute starcode from any directory:
     file may not contain empty lines.
     </p>
 
-    <p><pre>
-    Example:
-    TATCGACTCTATCTATCGCTGATGCGTAC       200
-    CGAGCCGCCGGCACGTCACGACGCATCAA       1
-    TAGCACCTACGCATCTCGACTATCACG         234
-    CGAGCCGCCGGCACGTCACGACGCATCAA       17
-    TGACTCTATCAGCTAC                    39
-    </pre><p>
+    <p>Example:
+    </p>
+<div class="postmeta"><pre>
+TATCGACTCTATCTATCGCTGATGCGTAC       200
+CGAGCCGCCGGCACGTCACGACGCATCAA       1
+TAGCACCTACGCATCTCGACTATCACG         234
+CGAGCCGCCGGCACGTCACGACGCATCAA       17
+TGACTCTATCAGCTAC                    39
+</pre></div>
 
 <h4>FASTA</h4>
-
 <p>Starcode supports FASTA files as well. Note, however, that the only
     relevant information for starcode is the sequence itself and the FASTA
     labels will not be used to identify the sequences in the output file.
     The sequences do not need to be sorted and may be repeated.
     </p>
 
-    <p><pre>
-    Example:
-    >sequence 1 label
-    ATGCATCGATCACTCATCAGCTACAG
-    >sequence 2 label
-    TATCGACTATCTACGACTACATCA
-    >sequence 3 label
-    ATCATCACTCTAGCAGCGTACTCGCA
-    >sequence 4 label
-    ATGCATCGATTACTCATCAGCTACAG
-    </pre></p>
+    <p>Example:
+    </p>
+<div class="postmeta"><pre>
+>sequence 1 label
+ATGCATCGATCACTCATCAGCTACAG
+>sequence 2 label
+TATCGACTATCTACGACTACATCA
+>sequence 3 label
+ATCATCACTCTAGCAGCGTACTCGCA
+>sequence 4 label
+ATGCATCGATTACTCATCAGCTACAG
+</pre></div>
+
+<h4>FASTQ</h4>
+<p>Starcode also supports FASTQ format. Only the sequence information
+    will be used and the label and quality lines will be omitted.
+    The sequences do not need to be sorted and may be repeated.
+    </p>
+
+    <p>Example:
+    </p>
+<div class="postmeta"><pre>
+@sequence 1 label
+ATGCATCGATCACTCATCAGCTACAG
++
+!''*((((***+))%%%++)(%%%%).
+@sequence 2 label
+TATCGACTATCTACGACTACATCA
++
+1***-+*''))**55CCF>>>>>>
+@sequence 3 label
+ATCATCACTCTAGCAGCGTACTCGCA
++
+CCCCCCC65!''*((((***+))%%%
+@sequence 4 label
+ATGCATCGATTACTCATCAGCTACAG
++
+++)(%%%%).1***-+*''))**55C
+</pre></div>
+<p>
+</p>
 
     <h3>Output format:</h3>
     <p>Starcode prints a line for each detected cluster with the following
   format:
   </p>
 
-  <p><pre>
-  [CANONICAL SEQUENCE]\t[CLUSTER SIZE]\t[CLUSTER SEQUENCES]\n
-  </pre></p>  
+<p><pre>
+[CANONICAL SEQUENCE]\t[CLUSTER SIZE]\t[CLUSTER SEQUENCES]\n
+</pre></p>  
 
   <p>Where '\t' denotes the TAB character and '\n' the NEWLINE character.
   'CANONICAL SEQUENCE' is the sequence of the cluster that has more
@@ -202,52 +237,49 @@ symbolic link to execute starcode from any directory:
   distance of 3 (-d3):
   </p>
 
-  <p><pre>
-    TAGCTAGACGTA   250
-    TAGCTAGCCGTA   10
-    TAAGCTAGGGGT   16
-    ACGCGAGCGGAA   155
-    ACTTTAGCGGAA   1
-  </pre></p>  
+  <div class="postmeta"><pre>
+TAGCTAGACGTA   250
+TAGCTAGCCGTA   10
+TAAGCTAGGGGT   16
+ACGCGAGCGGAA   155
+ACTTTAGCGGAA   1
+</pre></div>
 
   <p>would produce the following output:
   </p>
 
-  <p><pre>
-    TAGCTAGACGTA    276       TAGCTAGACGTA,TAGCTAGCCGTA,TAAGCTAGGGGT
-    ACGCGAGCGGAA    156       ACGCGAGCGGAA,ACTTTAGCGGAA
-  </pre></p>  
+<div class="postmeta"><pre>
+TAGCTAGACGTA    276       TAGCTAGACGTA,TAGCTAGCCGTA,TAAGCTAGGGGT
+ACGCGAGCGGAA    156       ACGCGAGCGGAA,ACTTTAGCGGAA
+</pre></div>  
 
   <p>The same example executed with a more restrictive distance -d2 would
   produce the following output:
   </p>
 
-  <p><pre>
-    TAGCTAGACGTA    260       TAGCTAGACGTA,TAGCTAGCCGTA
-    ACGCGAGCGGAA    155       ACGCGAGCGGAA
-    TAAGCTAGGGGT    16        TAAGCTAGGGGT
-    ACTTTAGCGGAA    1         ACTTTAGCGGAA
-  </pre></p>  
+<div class="postmeta"><pre>
+TAGCTAGACGTA    260       TAGCTAGACGTA,TAGCTAGCCGTA
+ACGCGAGCGGAA    155       ACGCGAGCGGAA
+TAAGCTAGGGGT    16        TAAGCTAGGGGT
+ACTTTAGCGGAA    1         ACTTTAGCGGAA
+</pre></div>  
 
 
-<h2>License</h2>
+<h2><a name="license">License</a></h2>
 <p>Starcode is licensed under the GNU General Public License, version 3
 (GPLv3), for more information read the LICENSE file or refer to:
   </p>
 
-  <p><pre>
-  http://www.gnu.org/licenses/
-  </pre></p>  
+<p><pre>
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>
+</pre></p>
 
 
-<h2>References</h2>
-<ol>
-  <li>Levenshtein, V. (1966), 'Binary Codes Capable of Correcting Deletions,
-  Insertions and Reversals', Soviet Physics Doklady 10, 707.</li>
-  <li>Needleman, S.B. and Wunsch, C.D. (1970), 'A general method applicable
-    to the search for similarities in the amino acid sequence of two
-    proteins' J. Mol. Biol., 48 (3), 443-53.</li>
-</ol>
+<h2><a name="refs">References</a></h2>
+<ul>
+   <li><a name="ref1">1.</a> Levenshtein, V. (1966), <em>Binary Codes Capable of Correcting Deletions, Insertions and Reversals</em>, Soviet Physics Doklady 10, 707.</li>
+   <li><a name="ref2">2.</a> Needleman, S.B. and Wunsch, C.D. (1970), <em>A general method applicable to the search for similarities in the amino acid sequence of two proteins</em>, J. Mol. Biol., 48 (3), 443-53.</li>
+</ul>
 
 {% endblock %}
 {% block section %}<div id="section" title="#starcode"></div>{% endblock %}
