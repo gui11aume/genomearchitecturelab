@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage{url}
+\usepackage[noanswer]{exercise}
+
+\setlength{\ExerciseSkipBefore}{1em}
+\setlength{\ExerciseSkipAfter}{1em}
+\renewcommand{\ExerciseHeader}{\noindent\textbf{\normalsize\ExerciseName\space\ExerciseHeaderNB\quad}\par}
+\renewcommand{\AnswerHeader}{\noindent\textbf{Answer to \normalsize\ExerciseName\space\ExerciseHeaderNB\quad}\par}
+
+\title{Stats exam 2014}
+\author{Guillaume Filion}
+
+\begin{document}
+
+\maketitle
+
+Please submit your answers by email to
+\texttt{guillaume.filion@gmail.com} before the deadline. Each
+question is worth 1 point. Every fraction of 24 hours passed
+the deadline will be penalized by 2 points. You are encouraged
+to work in group on these exercises.
+You can submit a joint answer sheet and will receive the same
+grade as your team members. In this case, indicate the name of
+all the students participating to the work.
+
+The answers will be posted online at the address below. \par
+\noindent \url{www.genomearchitecture.com/static/misc/statsexam_answers_2014.pdf}
+
+\section{Course questions}
+
+\begin{Exercise}[label={exo1}]
+  What are the main steps of a test?
+\end{Exercise}
+\begin{Answer}[ref={exo1}]
+  \begin{enumerate}
+    \item State the null hypothesis
+    \item Choose a statistic
+    \item Compute the null distribution
+    \item Compare the observed value of the stastic to the null
+  \end{enumerate}
+\end{Answer}
+
+\begin{Exercise}[label={exo2}]
+  What is the p-value of a test?
+\end{Exercise}
+\begin{Answer}[ref={exo2}]
+  The probability that the statistic is more extreme, given that
+  the null hypothesis is true.
+\end{Answer}
+
+\begin{Exercise}[label={exo3}]
+  What is the power of a test?
+\end{Exercise}
+\begin{Answer}[ref={exo3}]
+  The probability of rejecting the null hypothesis.
+\end{Answer}
+
+\begin{Exercise}[label={exo4}]
+  How can you increase the power of a test?
+\end{Exercise}
+\begin{Answer}[ref={exo4}]
+  By increasing the level or by increasing the sample size.
+\end{Answer}
+
+\begin{Exercise}[label={exo5}]
+  What is the statistic of the $t$-test?
+\end{Exercise}
+\begin{Answer}[ref={exo5}]
+  The effect size.
+\end{Answer}
+
+\section{Problem}
+
+  An insecure implementation of a password-protected acess
+  is to compare letter by letter the text enterred by the
+  user to the real password, and to deny access as soon
+  as a different letter is found. This is insecure because
+  it opens a possibility for \textit{a timing attack}, which
+  is an attempt to hack a password by measuring the time it
+  takes for the computer to respond.
+
+  \url{http://en.wikipedia.org/wiki/Timing_attack}
+
+  Suppose that my real password is \texttt{kotiki125}. If
+  the hacker enters \texttt{abcdefg}, the insecure method will
+  deny access immediately after comparing the first letter
+  because \texttt{a} is different from  \texttt{k}. But
+  if the hacker enters \texttt{kotiki123}, this method
+  will deny access upon comparing the 9-th letter, which will
+  take roughly 9 times as long. With this information, the
+  hacker could deduce that the first 8 letters of
+  \texttt{kotiki123} are correct.
+
+  The idea of a timing attack is to try all the letters
+  one by one and measure the time it takes for the computer
+  to respond. Every time a letter matches the password, the
+  response time will be slightly slower. By repeating the
+  process, the password can be decrypted completely.
+
+\begin{Exercise}
+  Assume that there are 64 valid password letters
+  (small letters, capital letters, numbers, \texttt{\_} and
+  \texttt{\~}, and that you want to decrypt a password
+  generated at random. You enter a text. What is the
+  probability that the first letter matches the password?
+  What is the probability that the first 3 letters match
+  the password?
+\end{Exercise}
+
+  Based on previous measurements, you know that the
+  time to compare two letters is 10 ns. In addition, for
+  every letter comparison, there is a random overhead due
+  to other processes running on the server. This overhead
+  has an exponential distribution with rate 0.125 ns$^{-1}$.
+
+\begin{Exercise}
+  The function \texttt{rexp(8, rate=.125)} in \texttt{R}
+  generates a random sample of size 10 drawn from an
+  exponential distribution with rate 0.125 ns$^{-1}$.
+  How to generate a random sample of size 8 representing
+  the response time of the server when the first letter of
+  the text does not match the password?
+\end{Exercise}
+
+  You have entered the text \texttt{aaaaaaaa} 8 times
+  and have observed the following response times (in ns)
+  23.0, 15.7, 21.4, 12.8, 13.3, 21.3, 38.2, 15.4.
+
+\begin{Exercise}
+  Do you think that the first letter of the password is
+  \texttt{a}? Quantify your certainty. Before you set up 
+  a complicated statistical test, look at the numbers
+  carefully.
+\end{Exercise}
+
+  You know that the password starts with \texttt{wy6qU}.
+  You now enter \texttt{wy6qUaaaaa} 8 times and obtain
+  the following response times (in ns)
+  122.0, 83.8, 71.4, 136.6, 93.6, 88.1, 84.1, 123.0
+
+  In \texttt{R} you can compute the sum of 6 exponential
+  random variables with rate 0.125 ns$^{-1}$ by using
+  \texttt{sum(rexp(6, rate=.125)}. Similarly, you can
+  generate a sample of size 8 representing the response
+  time of the server if the 6-th letter does not match
+  by using \texttt{replicate(8,60+sum(rexp(6,rate=1/8)))}.
+
+\begin{Exercise}
+  Using this information, design a statistical test to
+  know whether the 6-th letter of the password is \texttt{a}.
+  Quantify your certainty.
+\end{Exercise}
+
+\begin{Exercise}
+  What is the power of your test?
+\end{Exercise}
+
+\end{document}

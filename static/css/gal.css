@@ -136,3 +136,8 @@ span.k, span.kr {
 span.c, span.c1 {
   color: #90c4fa;
 }
+
+pre {
+  overflow-x: auto;
+}
+
