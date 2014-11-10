@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage{url}
-\usepackage[noanswer]{exercise}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage[answerdelayed]{exercise}
 
 \setlength{\ExerciseSkipBefore}{1em}
 \setlength{\ExerciseSkipAfter}{1em}
@@ -33,10 +35,10 @@ The answers will be posted online at the address below. \par
 \end{Exercise}
 \begin{Answer}[ref={exo1}]
   \begin{enumerate}
-    \item State the null hypothesis
-    \item Choose a statistic
-    \item Compute the null distribution
-    \item Compare the observed value of the stastic to the null
+    \item State the null hypothesis.
+    \item Choose a statistic.
+    \item Compute the null distribution.
+    \item Compare the observed value of the stastic to the null.
   \end{enumerate}
 \end{Answer}
 
@@ -97,7 +99,7 @@ The answers will be posted online at the address below. \par
   response time will be slightly slower. By repeating the
   process, the password can be decrypted completely.
 
-\begin{Exercise}
+\begin{Exercise}[label={exo6}]
   Assume that there are 64 valid password letters
   (small letters, capital letters, numbers, \texttt{\_} and
   \texttt{\~}, and that you want to decrypt a password
@@ -106,6 +108,9 @@ The answers will be posted online at the address below. \par
   What is the probability that the first 3 letters match
   the password?
 \end{Exercise}
+\begin{Answer}[ref={exo6}]
+  $\left(\frac{1}{64}\right)^3 \approx 3.8 \cdot 10^{-6}$
+\end{Answer}
 
   Based on previous measurements, you know that the
   time to compare two letters is 10 ns. In addition, for
@@ -113,25 +118,34 @@ The answers will be posted online at the address below. \par
   to other processes running on the server. This overhead
   has an exponential distribution with rate 0.125 ns$^{-1}$.
 
-\begin{Exercise}
+  \begin{Exercise}[label={exo7}]
   The function \texttt{rexp(8, rate=.125)} in \texttt{R}
-  generates a random sample of size 10 drawn from an
+  generates a random sample of size 8 drawn from an
   exponential distribution with rate 0.125 ns$^{-1}$.
   How to generate a random sample of size 8 representing
   the response time of the server when the first letter of
   the text does not match the password?
 \end{Exercise}
+\begin{Answer}[ref={exo7}]
+  \texttt{10+rexp(8, rate=.125)}
+\end{Answer}
 
   You have entered the text \texttt{aaaaaaaa} 8 times
   and have observed the following response times (in ns)
   23.0, 15.7, 21.4, 12.8, 13.3, 21.3, 38.2, 15.4.
 
-\begin{Exercise}
+  \begin{Exercise}[label={exo8}]
   Do you think that the first letter of the password is
   \texttt{a}? Quantify your certainty. Before you set up 
   a complicated statistical test, look at the numbers
   carefully.
 \end{Exercise}
+\begin{Answer}[ref={exo8}]
+  If the first letter is \texttt{a}, there will be at
+  least 2 letter comparisons, which takes at least 20 ns.
+  Since at least one of the numbers is lower than 20 ns,
+  this cannot be the case.
+\end{Answer}
 
   You know that the password starts with \texttt{wy6qU}.
   You now enter \texttt{wy6qUaaaaa} 8 times and obtain
@@ -143,16 +157,99 @@ The answers will be posted online at the address below. \par
   \texttt{sum(rexp(6, rate=.125)}. Similarly, you can
   generate a sample of size 8 representing the response
   time of the server if the 6-th letter does not match
-  by using \texttt{replicate(8,60+sum(rexp(6,rate=1/8)))}.
+  by using \texttt{replicate(8,60+sum(rexp(6,rate=.125)))}.
 
-\begin{Exercise}
+  \begin{Exercise}[label={exo9}]
   Using this information, design a statistical test to
   know whether the 6-th letter of the password is \texttt{a}.
   Quantify your certainty.
 \end{Exercise}
+\begin{Answer}[ref={exo9}]
+  \begin{enumerate}
+    \item Ho: the 6-th letter is not \texttt{a}.
+    \item The statistic is the minimum response time.
+    \item To identify the null distribution we do the following
+      in \texttt{R}.
 
-\begin{Exercise}
+\begin{verbatim}
+mins <- rep(NA, 10000)
+for (i in 1:10000) {
+  mins[i] <- min(replicate(8,60+sum(rexp(6,rate=.125))))
+}
+\end{verbatim}
+
+    \item To compare the sample to the null distribution we do the
+      following.
+
+\begin{verbatim}
+hist(mins, breaks=50)
+abline(v=71.4, col=2)
+mean(mins < 71.4) # 0.0264
+\end{verbatim}
+
+  \end{enumerate}
+
+  We get the graphical results shown below. In only 2.6\% of
+  the cases we get a lower minimum value out of 8. This means
+  that the minimum value for our sample is \textit{low} and that
+  we should \textit{not} reject the null hypothesis, because
+  if the null hypothesis is true, we expect the minimum value
+  to be low. This is a special case where it makes sense to
+  use a one-sided test and put all the rejection on the right
+  side of the distribution, which corresponds to our intuition
+  in the case that the null hypothesis is false.
+
+  \centerline{\includegraphics[scale=0.5]{mins.pdf}}
+
+  This exercise is interesting because several choices are
+  possible for the statistic. We could as well take the average
+  instead of the minimum, but Exercise 8 suggests that taking
+  the minimum contains more information. If we take the average,
+  the null distribution is different, and also the power. Also,
+  it is one of a few cases where the rejection \textit{should}
+  be one-sided because the alternative hypothesis is simple
+  (\textit{i.e.} not composite), if the null hypothesis is
+  false, the response time will be longer (and not either
+  longer or shorter).
+
+\end{Answer}
+
+\begin{Exercise}[label={exo10}]
   What is the power of your test?
 \end{Exercise}
+\begin{Answer}[ref={exo10}]
+  In this case, it makes sense to compute the power when the 6-th
+  letter is \texttt{a} (the null hypothesis is false) and the
+  7-th letter is wrong. In this case, the distribution of
+  the sample will be \texttt{replicate(8,70+sum(rexp(7,rate=.125)))}.
+
+\begin{verbatim}
+mins2 <- rep(NA, 10000)
+for (i in 1:10000) {
+   mins2[i] <- min(replicate(8,70+sum(rexp(7,rate=.125))))
+}
+threshold <- quantile(mins, 0.95) # 97.00
+mean(mins2 > threshold) # 0.63
+\end{verbatim}
+
+  So when the null hypothesis is false, we reject it 63\% of
+  the time, which is the power of the test. Note that if the 7-th
+  letter is correct, the response time will be longer and the
+  rejection will happen more than 63\% of the time, so this
+  number represents the minimum power.
+  
+  If the queries are free
+  (in terms of time or risk for the hacker), it makes sense
+  to do more than 8 per letter in order to raise the power close
+  to 1.0. Otherwise, it is a matter of computing the cost/benefit
+  ratio for the hacker keeping in mind that the hacker would have
+  only 63\% chance of identifying the right letter with 8 queries.
+  
+
+
+\end{Answer}
+
+\cleardoublepage
+\shipoutAnswer
 
 \end{document}

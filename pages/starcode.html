@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-{% block body %}
-<h1>Starcode</h1>
 
-<h2>Index</h2>
-<ul>
-  <li><a href="#whatis">What is starcode?</a></li>
-  <li><a href="#download">Downloading.</a></li>
-  <li><a href="#source">Source file list.</a></li>
-  <li><a href="#install">Compilation and installation.</a></li>
-  <li><a href="#run">Running starcode.</a></li>
-  <li><a href="#formats">File formats.</a></li>
-  <li><a href="#license">License.</a></li>
-  <li><a href="#refs">References.</a></li>
-</ul>
+{% block title %}Starcode | Filion lab{% endblock %}
+
+{% block description %}
+<meta name="description" content="starcode: error correction by all-pairs
+matching (bioinformatics tool for sequence clustering).
+Download link and manual at the Filion lab." />
+{% endblock %}
+
+
+{% block body %}
+
+<h2>Download</h2>
+You can download starcode from <a href="https://github.com/gui11aume/starcode">github</a>
 
 <h2><a name="whatis">What is starcode?</a></h2>
 <p>Starcode is an exact and fast DNA sequence clustering software. Sequence
