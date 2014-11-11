@@ -166,7 +166,7 @@ The answers will be posted online at the address below. \par
 \end{Exercise}
 \begin{Answer}[ref={exo9}]
   \begin{enumerate}
-    \item Ho: the 6-th letter is not \texttt{a}.
+    \item Ho: the 6-th letter is not \texttt{a}
     \item The statistic is the minimum response time.
     \item To identify the null distribution we do the following
       in \texttt{R}.
@@ -210,7 +210,11 @@ mean(mins < 71.4) # 0.0264
   be one-sided because the alternative hypothesis is simple
   (\textit{i.e.} not composite), if the null hypothesis is
   false, the response time will be longer (and not either
-  longer or shorter).
+  longer or shorter). Also note that the null hypothesis cannot
+  be that the 6-th letter is \texttt{a} because this does not
+  allow to compute the null distribution (the distribution then
+  depends on whether the 7-th and further letters are guessed
+  correctly).
 
 \end{Answer}
 
