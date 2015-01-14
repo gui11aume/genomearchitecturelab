@@ -15,8 +15,8 @@ Download link and manual at the Filion lab." />
 You can download starcode from <a href="https://github.com/gui11aume/starcode">github</a>
 
 <h2><a name="whatis">What is starcode?</a></h2>
-<p>Starcode is an exact and fast DNA sequence clustering software. Sequence
-clustering is performed based on a Levenshtein distance metric
+<p>Starcode is a DNA sequence clustering software. Sequence clustering is
+performed by finding all pairs below a Levenshtein distance metric
 <a href="#ref1">[1]</a>. Typically, a file containing a set of related
 DNA sequences is passed as input, jointly with a parameter specifying the
 desired cluster distance. Starcode aligns and computes the distance between all
@@ -44,8 +44,11 @@ git clone git://github.com/gui11aume/starcode.git
   <li><strong>main-starcode.c</strong>    Starcode main file (parameter parsing).</li>
   <li><strong>starcode.c</strong>         Main starcode algorithm.</li>
   <li><strong>starcode.h</strong>         Main starcode algorithm header file.</li>
+  <li><strong>starcode-private.h</strong>         Main starcode algorithm private header file.</li>
+  <li><strong>trie.c</strong>             Trie search and construction functions.</li>
   <li><strong>trie.c</strong>             Trie search and construction functions.</li>
   <li><strong>trie.h</strong>             Trie functions header file.</li>
+  <li><strong>trie-private.h</strong>             Trie functions private header file.</li>
   <li><strong>Makefile</strong>           Make instruction file.</li>
 </ul>
 
@@ -80,21 +83,6 @@ sudo ln -s ./starcode /usr/bin/starcode
 starcode [-vs] [-d#] [-t#] [-i] INPUT_FILE [-o OUTPUT_FILE]
 </pre></div>
   
-<p><strong>-v or --verbose</strong>
-</p>
-<div class="postmeta">Verbose. Prints verbose information to the standard error channel.
-</div>
-
-<p><strong>-i or --input</strong> <em>file</em>
-</p>
-<div class="postmeta">Specifies input file.
-</div>
-
-<p><strong>-o or --output</strong> <em>file</em>
-</p>
-<div class="postmeta">Specifies output file. When not set, standard output is used instead.
-</div>
-
 <p><strong>-d or --distance</strong> <em>distance</em>
 </p>
      <div class="postmeta">Defines the maximum Levenshtein distance for clustering.
@@ -113,10 +101,46 @@ starcode [-vs] [-d#] [-t#] [-i] INPUT_FILE [-o OUTPUT_FILE]
      clustering phase, instead of the default message passing algorithm.
 </div>
 
+<p><strong>-q or --quiet</strong>
+</p>
+<div class="postmeta">Non verbose. By default, starcode prints verbose information to the standard error channel.
+</div>
+
 <p><strong>-h or --help</strong>
 </p>
 <div class="postmeta">Prints usage information.
 </div>
+
+<p><strong>-o or --output</strong> <em>file</em>
+</p>
+<div class="postmeta">Specifies output file. When not set, standard output is used instead.
+</div>
+
+<p><strong>--non-redundant</strong>
+</p>
+<div class="postmeta">Removes redundant sequences from the output. Only the canonical sequence of each cluster is returned.
+</div>
+
+<p><strong>--print-clusters</strong>
+</p>
+<div class="postmeta">Adds a third column to the starcode output, containing the sequences associated with each cluster. By default, the output contains only the centroid and the counts.
+</div>
+
+Single-file mode:
+
+<p><strong>-i or --input</strong> <em>file</em>
+</p>
+<div class="postmeta">Specifies input file.
+</div>
+
+Paired-end file mode:
+
+<p><strong>-1</strong> <em>file1</em> <strong>-2</strong> <em>file2</em>
+</p>
+<div class="postmeta">Specifies two paired-end FASTQ files for paired-end clustering mode.
+</div>
+
+Standard input is used when neither <strong>-i</strong> nor <strong>-1/-2</strong> are set.
 
 <h2><a name='formats'>File formats</a></h2>
 
