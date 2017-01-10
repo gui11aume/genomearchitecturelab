@@ -71,6 +71,17 @@ ul#archive {
   margin-bottom: 5px;
 }
 
+#postbody ol {
+  margin-left: 40px;
+}
+
+#postbody .caption {
+  text-indent: 0;
+  line-height: 75%;
+  font-style: italic;
+  font-size: 85%;
+}
+
 #prev_next {
   text-align:center;
 }
@@ -140,3 +151,4 @@ span.c, span.c1 {
 pre {
   overflow-x: auto;
 }
+
